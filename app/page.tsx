@@ -21,7 +21,7 @@ export default async function Index() {
       <section>
         <ul>
           <li>
-            <Image src={Visual} alt="visual" />
+            <Image src={Visual} alt="visual" className="size-full" />
           </li>
         </ul>
       </section>

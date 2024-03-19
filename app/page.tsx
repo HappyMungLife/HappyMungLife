@@ -1,4 +1,6 @@
 import { createClient } from '@/app/_utils/supabase/server';
+import Image from 'next/image';
+import Visual from '@/public/images/visual_1.png';
 
 export default async function Index() {
   // const canInitSupabaseClient = () => {
@@ -16,81 +18,11 @@ export default async function Index() {
 
   return (
     <section>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
-      <p>
-        메인페이지 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, iste commodi vitae dolores hic
-        totam, reiciendis rerum exercitationem nobis doloribus aliquam officia animi ab at culpa minima cum, quaerat
-        libero.
-      </p>
+      <ul>
+        <li>
+          <Image src={Visual} alt="visual" />
+        </li>
+      </ul>
     </section>
   );
 }

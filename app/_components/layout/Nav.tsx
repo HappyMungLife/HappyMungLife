@@ -3,18 +3,18 @@ import React from 'react';
 
 const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className="pt-28 pb-5">
+      <ul className="flex items-center justify-center gap-10 text-lg whitespace-nowrap">
+        <li className="hover:text-primaryColor">
           <Link href="/">유저 커뮤니티</Link>
         </li>
-        <li>
+        <li className="hover:text-primaryColor">
           <Link href="/">중고거래</Link>
         </li>
-        <li>
+        <li className="hover:text-primaryColor">
           <Link href="/">식당/카페</Link>
         </li>
-        <li>
+        <li className="hover:text-primaryColor">
           <Link href="/">병원/약국</Link>
         </li>
       </ul>

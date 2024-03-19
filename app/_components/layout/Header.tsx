@@ -11,10 +11,12 @@ export default function Header() {
         </Link>
       </h1>
       <div>
-        <Link href="/" className="m-3">
+        <Link href="/" className="hover:text-primaryColor m-3">
           로그인
         </Link>
-        <Link href="/">회원가입</Link>
+        <Link href="/" className="hover:text-primaryColor">
+          회원가입
+        </Link>
       </div>
     </header>
   );

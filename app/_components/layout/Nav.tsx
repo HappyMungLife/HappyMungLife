@@ -4,9 +4,9 @@ import React from 'react';
 const Nav = () => {
   return (
     <nav className="pt-28 pb-5">
-      <ul className="flex items-center justify-center gap-10 text-lg whitespace-nowrap">
+      <ul className="flex items-center justify-center gap-10 text-lg whitespace-nowrap font-semibold">
         <li className="hover:text-primaryColor">
-          <Link href="/">유저 커뮤니티</Link>
+          <Link href="/">커뮤니티</Link>
         </li>
         <li className="hover:text-primaryColor">
           <Link href="/">중고거래</Link>

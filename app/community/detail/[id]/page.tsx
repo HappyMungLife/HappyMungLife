@@ -2,6 +2,7 @@
 
 // SSR?  CSR? - DB데이터변할수. SSR
 import { Database, communityPosts } from '@/app/_types/communityPosts.types';
+import { formatToLocaleDateTimeString } from '@/app/_utils/date';
 import { createClient } from '@/app/_utils/supabase/server';
 
 // 댓글은 따로 communityComments 로 테이블만들어서 foreign key 로 이 테이블과 연결해야할거같음
@@ -30,6 +31,8 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   // imageUrl : [' ..' , '.. '] - 이미지 아예 없는 경우 (빈배열) / 1장, 2장? 처리하기
   const firstImgUrl = imageUrl![0];
 
+  const postedDate = formatToLocaleDateTimeString(created_at);
+
   if (!posts) {
     // posts 없어도 안뜸  - 에러 처리 수정하기
     return <div>없는 페이지입니다.</div>;
@@ -37,14 +40,13 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="flex justify-center m-5">
-      <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[720px] px-5">
-        <div className="flex w-[1100px] my-10 pl-10 bg-orange-200/10 rounded-lg">
-          <div className="flex gap-10 w-10/12 items-center px-1 ">
+      <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[720px] ">
+        <div className="flex w-[1200px] my-10 pl-24 bg-orange-200/10 rounded-lg p-2">
+          <div className="flex w-10/12 items-center px-1">
             <p className="text-lg w-10/12 font-bold ">{title}</p>
-            <p>{created_at}</p>
-            {/* 날짜 변경예정 _utils 통해 */}
+            <p className="text-sm">{postedDate}</p>
           </div>
-          <div className="flex justify-center items-center gap-5 p-2  w-[200px]">
+          <div className="flex justify-start items-center gap-5 ml-5 w-[200px]">
             {/* 유저 프로필에서 업로드 한 이미지 가져올 예정  / 기본이미지 : 개 발자국*/}
             <img
               src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg"

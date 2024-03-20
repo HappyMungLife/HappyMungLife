@@ -38,9 +38,9 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex justify-center m-5">
       <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[720px] px-5">
-        <div className="flex w-full m-10">
-          <div className="flex gap-10 bg-gray-100 w-10/12 items-center px-1">
-            <p className="w-10/12 font-bold px-5">{title}</p>
+        <div className="flex w-[1100px] my-10 pl-10 bg-orange-200/10 rounded-lg">
+          <div className="flex gap-10 w-10/12 items-center px-1 ">
+            <p className="text-lg w-10/12 font-bold ">{title}</p>
             <p>{created_at}</p>
             {/* 날짜 변경예정 _utils 통해 */}
           </div>

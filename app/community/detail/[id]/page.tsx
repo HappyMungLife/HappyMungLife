@@ -1,9 +1,13 @@
-// 'use client';
+// 'use server';
 
 // SSR?  CSR? - DB데이터변할수. SSR
+// TODO : 서버컴포넌트 React Query 사용해서 supabase db 가져와보기
+// TOO : 댓글 추가 기능
 import { Database, communityPosts } from '@/app/_types/communityPosts.types';
 import { formatToLocaleDateTimeString } from '@/app/_utils/date';
-import { createClient } from '@/app/_utils/supabase/server';
+// import { createClient } from '@/app/_utils/supabase/server';
+import EditDeleteButton from '@/app/_components/detailPageComponents/EditDeleteButton';
+import { createClientJs } from '@/app/_utils/supabase/clientJs';
 
 // 댓글은 따로 communityComments 로 테이블만들어서 foreign key 로 이 테이블과 연결해야할거같음
 
@@ -12,11 +16,17 @@ export const revalidate = 0; // SSR
 // not-found 페이지 필요
 const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   const postId = params.id;
-  const supabase = createClient();
+  const supabase = createClientJs(); // 여기서 js 는 잘 먹힘 - 서버컴포넌트
 
-  const fetchPost = async (): Promise<communityPosts> => {
+  // * 데이터 가져오는 함수를 따로 hook 처럼 뺼 지
+  // 게시글과 해당 게시글 댓글들 가져오기
+  const fetchPost = async () => {
+    // : Promise<communityPosts> 타입 외래키 comment 까지 다시 생성해야
     try {
-      const { data: posts, error } = await supabase.from('communityPosts').select(`*`).eq('postId', postId);
+      const { data: posts, error } = await supabase
+        .from('communityPosts')
+        .select('*') // comments:communityComments(*)
+        .eq('postId', postId);
       if (error) throw error;
       return posts![0];
     } catch (error) {
@@ -29,9 +39,23 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   const { nickname, title, content, imageUrl, created_at, liked } = posts;
   // * 이미지 우선 한 장으로 할 지?
   // imageUrl : [' ..' , '.. '] - 이미지 아예 없는 경우 (빈배열) / 1장, 2장? 처리하기
-  const firstImgUrl = imageUrl![0];
-
+  // comments : [{} ,{},..]
   const postedDate = formatToLocaleDateTimeString(created_at);
+  // const firstImgUrl = imageUrl![0]; // 이미지 없는 경우 처리해주기
+
+  // const userId = comments ? comments![0].userId : ''; // 댓글 없는 경우 처리해주기
+  // comments[1].userId;
+
+  // 댓글 가져오기
+  // const fetchComments = async () => {
+  //   try {
+  //     const { data: userInfo, error } = await supabase.from('users').select('*').eq('userId', userId);
+  //     // console.log('🐰 ~ fetchComments ~ userInfo : ', userInfo);
+  //     return userInfo;
+  //   } catch (error) {
+  //     console.error();
+  //   }
+  // };
 
   if (!posts) {
     // posts 없어도 안뜸  - 에러 처리 수정하기
@@ -71,11 +95,8 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </section>
         <section className="flex justify-between mt-[100px] px-20 w-full">
-          {/*  bg-fuchsia-300 */}
-          <div className="flex gap-5">
-            <button className=" border-2 border-gray-300 rounded p-2">수정</button>
-            <button className=" border-2 border-gray-300 rounded p-2">삭제</button>
-          </div>
+          {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
+          <EditDeleteButton postId={postId} />
           <div className="flex gap-5">
             {/* 아이콘,이미지로 대체 예정 */}
             <button className="text-lg border-2 border-gray-300 rounded p-2">👍 {liked}</button>

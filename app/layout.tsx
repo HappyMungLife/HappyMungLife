@@ -3,6 +3,7 @@ import './globals.css';
 import Nav from '@/app/_components/layout/Nav';
 import Footer from '@/app/_components/layout/Footer';
 import Header from '@/app/_components/layout/Header';
+import QueryProvider from './provider';
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header />
         <Nav />
-        <main>{children}</main>
+        <main>
+          <QueryProvider>{children}</QueryProvider>
+        </main>
         <Footer />
       </body>
     </html>

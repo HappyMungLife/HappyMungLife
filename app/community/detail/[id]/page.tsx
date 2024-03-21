@@ -28,6 +28,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         .select('*') // comments:communityComments(*)
         .eq('postId', postId);
       if (error) throw error;
+      console.log(posts);
       return posts![0];
     } catch (error) {
       console.error();

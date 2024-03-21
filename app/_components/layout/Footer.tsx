@@ -11,7 +11,7 @@ const Footer = () => {
       <h1>
         <Image className="w-28" src={Logo} alt="logo" />
       </h1>
-      <div className="text-sm">
+      <div className="text-sm text-center">
         <h2>강아지, 애견 장소 정보 중고거래나눔 커뮤니티</h2>
         <p>혁우님과 함께하면 참 10조 &copy;All rights reserved.</p>
       </div>

@@ -1,6 +1,6 @@
 import type { Database } from '@/app/_types/communityPosts.types';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'; // 서버 컴포넌트에서만 사용 가능
 
 export const createClient = () => {
   const cookieStore = cookies();

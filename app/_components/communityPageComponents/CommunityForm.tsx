@@ -3,9 +3,9 @@
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 import { useState } from 'react';
 
-export const CommunityForm = () => {
-  const supabase = createClientJs();
+const supabase = createClientJs();
 
+export const CommunityForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -19,12 +19,21 @@ export const CommunityForm = () => {
 
   const addPostHandler = async (e: any) => {
     e.preventDefault();
-    console.log('title', title);
-    console.log('content', content);
+
+    if (!title.trim()) {
+      alert('제목을 입력해주세요.');
+      return;
+    }
+
+    if (!content.trim()) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
+
 
     const { data, error } = await supabase
       .from('communityPosts')
-      .insert([{ title, content, userId : "12341" }])
+      .insert([{ title, content, userId : "1234" }])
       .select();
   };
 

@@ -28,22 +28,12 @@ export default async function Index() {
       <section className="flex text-center pt-10 gap-10 px-10">
         <div className="w-2/4">
           <h2 className="text-lg font-semibold">커뮤니티</h2>
-          <div className="bg-secondaryColor rounded-xl mt-3 mb-10 p-10">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet officiis excepturi nam nostrum eos tempora
-            nemo ullam! Atque amet, sequi alias mollitia non perspiciatis incidunt error natus, necessitatibus officiis
-            iste?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus officiis enim, quod quo porro, autem
-            sunt ad nobis libero consequatur ipsum veritatis modi voluptatibus molestias esse delectus ullam tempore
-            sint.
-          </div>
+          <div className="bg-secondaryColor rounded-xl mt-3 mb-10 p-10">커뮤니티 내용</div>
         </div>
         <div className="w-2/4">
           <h2 className="text-lg font-semibold">중고거래</h2>
           <div className="bg-secondaryColor rounded-xl mt-3 mb-10 p-10">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet officiis excepturi nam nostrum eos tempora
-            nemo ullam! Atque amet, sequi alias mollitia non perspiciatis incidunt error natus, necessitatibus officiis
-            iste?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus officiis enim, quod quo porro, autem
-            sunt ad nobis libero consequatur ipsum veritatis modi voluptatibus molestias esse delectus ullam tempore
-            sint.
+         중고거래 내용
           </div>
         </div>
       </section>

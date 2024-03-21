@@ -20,7 +20,7 @@ const Footer = () => {
         target="_blank"
         className="block size-8 hover:text-primaryColor"
       >
-        <FontAwesomeIcon icon={faGithub} />
+        <FontAwesomeIcon className="size-8" icon={faGithub} />
       </Link>
     </footer>
   );

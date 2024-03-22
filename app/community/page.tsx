@@ -6,7 +6,7 @@ import { faBookmark as faBookmarkRegular, faHeart as faHeartRegular } from '@for
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { CommunityData } from '@/app/_components/communityComponents/commumitySupabase';
-import { getFormattedDate } from '../_hooks/formattedDate';
+import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 
 const Community = () => {
@@ -72,7 +72,7 @@ const Community = () => {
                         <span>{item.liked}</span>
                       </p>
                     </div>
-                    <time className="text-[#ccc] mr-10">{getFormattedDate(item.created_at)}</time>
+                    <time className="text-[#ccc] mr-10">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <div className="mt-3">
                     <h3 className="text-2xl font-semibold">{item.title}</h3>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Visual from '@/public/images/visual_1.png';
 import { CommunityData } from './_components/communityComponents/commumitySupabase';
 import { useEffect, useState } from 'react';
-import { getFormattedDate } from './_hooks/formattedDate';
+import { formatToLocaleDateTimeString } from './_utils/date';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -48,7 +48,7 @@ export default function Index() {
                         <span>{item.liked}</span>
                       </p>
                     </div>
-                    <time className="text-[#ccc] text-sm">{getFormattedDate(item.created_at)}</time>
+                    <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <h2 className="mt-3">{item.title}</h2>
                   <p>{item.content}</p>

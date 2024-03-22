@@ -27,6 +27,6 @@ export const TradeData = () => {
 
     fetchItems();
   }, []);
-
+tnwjd 
   return { tradeItems, tradeLoading, tradeError };
 };

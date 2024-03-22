@@ -3,11 +3,11 @@
 // TOO : 댓글 추가 기능
 import { Database, communityPosts } from '@/app/_types/communityPosts.types';
 import { formatToLocaleDateTimeString } from '@/app/_utils/date';
-import EditDeleteButton from '@/app/_components/detailPageComponents/EditDeleteButton';
 import { createClientJs } from '@/app/_utils/supabase/clientJs';
 import ScrapButton from '@/app/_components/detailPageComponents/ScrapButton';
 import LikeButton from '@/app/_components/detailPageComponents/LikeButton';
 import NotFoundPage from '@/app/not-found';
+import PostEditDeleteButton from '@/app/_components/detailPageComponents/PostEditDeleteButton';
 
 export const revalidate = 0; // SSR
 
@@ -32,6 +32,22 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
       console.error(error);
     }
   };
+
+  const fetchComments = async () => {
+    try {
+      const { data: comments, error } = await supabase
+        .from('communityComments')
+        .select('*, commentUser:users(nickname,profileImage)')
+        .eq('postId', postId);
+      if (error) throw error;
+      console.log('comments![0] ', comments); // [ ] 배열 - comment[0] {commentId:.., commentUsers:{ nickname: .., }}
+      return comments;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const comments = await fetchComments();
 
   const userId = 'gpfus'; // 임시 설정 테스트
 
@@ -90,26 +106,49 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">
           {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
-          <EditDeleteButton postId={postId} mode="community" />
+          <PostEditDeleteButton postId={postId} mode="community" />
           <div className="flex gap-5">
             {/* 로그인 X 상태면 눌렀을 때 로그인 후 이용해주세요 뜨게하기 */}
-            {/* <LikeButton postId={postId} userId={userId} liked={liked} />
-            <ScrapButton postId={postId} userId={userId} /> */}
+            <LikeButton postId={postId} userId={userId} liked={liked} />
+            <ScrapButton postId={postId} userId={userId} />
           </div>
         </section>
         <section className="mt-20 px-10 w-full">
           <p>댓글 10</p>
           <hr className="bg-gray-400 w-full" />
           {/* 유저 로그인 상태, 해당 유저일 시 뜨게함 */}
-          <div className="mt-10 flex flex-col justify-center items-center">
+          <div className="my-10 flex flex-col justify-center items-center">
             <div className="flex flex-col gap-5">
               <textarea className="w-[1000px] h-[100px] border-2 border-gray-300 rounded-xl"></textarea>
               <div className="flex justify-end">
                 <button className="border-2 border-gray-300 rounded p-2 w-20">등록</button>
               </div>
             </div>
-            <div className="m-10">
-              <div className="flex gap-5 mt-10 justify-between items-center w-[1000px]">
+            {comments?.map(
+              ({ commentUser, content, created_at }: { commentUser: any; content: any; created_at: any }) => {
+                // 타입 재설정
+                const postedDate = formatToLocaleDateTimeString(created_at);
+                return (
+                  <div className="">
+                    <div className="flex gap-5 mt-7 justify-between items-center w-[1000px]">
+                      <div className="flex items-center gap-5 px-3">
+                        <img src={commentUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-12 h-12" />
+                        <p>{commentUser.nickname}</p>
+                      </div>
+                      <p className="px-3">{postedDate}</p>
+                    </div>
+                    <div className="mt-3 bg-primaryColor/30 rounded p-5 min-h-[100px]">
+                      <p>{content}</p>
+                    </div>
+                    <div className="flex justify-end gap-10 m-5">
+                      <button>수정</button>
+                      <button>삭제</button>
+                    </div>
+                  </div>
+                );
+              }
+            )}
+            {/* <div className="flex gap-5 mt-10 justify-between items-center w-[1000px]">
                 <div className="flex items-center gap-5 px-3">
                   <img
                     src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg"
@@ -126,8 +165,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
               <div className="flex justify-end gap-10 m-5">
                 <button>수정</button>
                 <button>삭제</button>
-              </div>
-            </div>
+              </div> */}
           </div>
         </section>
       </div>

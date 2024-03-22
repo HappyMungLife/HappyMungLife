@@ -10,25 +10,24 @@ import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 
 const Trade = () => {
-  const { items, loading, error } = TradeData();
+  const { tradeItems, tradeLoading, tradeError } = TradeData();
   const [sortedItems, setSortedItems] = useState<any[]>([]);
   const [isActive, setIsActive] = useState('latest');
 
-  console.log(items);
   useEffect(() => {
-    setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
-  }, [items]);
+    setSortedItems([...tradeItems].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
+  }, [tradeItems]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (tradeLoading) return <div>Loading...</div>;
+  if (tradeError) return <div>Error: {tradeError.message}</div>;
 
   const onClickLatestHandle = () => {
-    setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
+    setSortedItems([...tradeItems].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
     setIsActive('latest');
   };
 
   const onClickLikeHandle = () => {
-    setSortedItems([...items].sort((a, b) => b.saved - a.saved));
+    setSortedItems([...tradeItems].sort((a, b) => b.saved - a.saved));
     setIsActive('like');
   };
 

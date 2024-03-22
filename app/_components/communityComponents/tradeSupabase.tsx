@@ -10,23 +10,23 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const TradeData = () => {
-  const [items, setItems] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<PostgrestError | null>(null);
+  const [tradeItems, setTradeItems] = useState<any[]>([]);
+  const [tradeLoading, setTradeLoading] = useState<boolean>(true);
+  const [tradeError, setTradeError] = useState<PostgrestError | null>(null);
 
   useEffect(() => {
     const fetchItems = async () => {
       const { data, error } = await supabase.from('tradePosts').select('*');
       if (error) {
-        setError(error);
+        setTradeError(error);
       } else {
-        setItems(data || []);
+        setTradeItems(data || []);
       }
-      setLoading(false);
+      setTradeLoading(false);
     };
 
     fetchItems();
   }, []);
 
-  return { items, loading, error };
+  return { tradeItems, tradeLoading, tradeError };
 };

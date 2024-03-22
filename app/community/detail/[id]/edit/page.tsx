@@ -1,6 +1,7 @@
 import CommunityEditForm from '@/app/_components/communityPageComponents/CommunityEditForm';
 import CommunityForm from '@/app/_components/communityPageComponents/CommunityForm';
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
+import { createClient } from '@/app/_utils/supabase/server'; 
 import React from 'react';
 
 const EditPage = async ({ params }: { params: { id: string } }) => {

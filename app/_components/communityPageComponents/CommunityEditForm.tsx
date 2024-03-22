@@ -1,8 +1,8 @@
 'use client';
 
-import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { updatePostHandler } from '@/app/actions';
 
 type CommunityEditFormProps = {
   postId: string;
@@ -11,7 +11,6 @@ type CommunityEditFormProps = {
 };
 
 export const CommunityEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
-  const supabase = createClientJs();
   const router = useRouter();
   const [title, setTitle] = useState(prevTitle);
   const [content, setContent] = useState(prevContent);
@@ -24,28 +23,15 @@ export const CommunityEditForm = ({ postId, prevTitle, prevContent }: CommunityE
     setContent(e.target.value);
   };
 
-  const updatePostHandler = async (e: any) => {
-    e.preventDefault();
-    try {
-      const { data, error } = await supabase
-        .from('communityPosts')
-        .update({ title, content })
-        .eq('postId', postId)
-        .select();
-
-      if (data && !error) {
-        alert("수정이 완료 되었습니다.");
-        router.push(`/community/detail/${postId}`)
-      } else if (error) {
-        if (error) throw error;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
-    <form onSubmit={updatePostHandler} className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64">
+    <form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        await updatePostHandler(postId, title, content);
+        alert('수정이 완료되었습니다.');
+      }}
+      className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64"
+    >
       <div className="my-10">
         <label className="text-2xl mr-5">제목</label>
         <input

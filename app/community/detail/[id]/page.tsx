@@ -8,6 +8,7 @@ import { formatToLocaleDateTimeString } from '@/app/_utils/date';
 // import { createClient } from '@/app/_utils/supabase/server';
 import EditDeleteButton from '@/app/_components/detailPageComponents/EditDeleteButton';
 import { createClientJs } from '@/app/_utils/supabase/clientJs';
+import { createClient } from '@/app/_utils/supabase/server';
 
 // 댓글은 따로 communityComments 로 테이블만들어서 foreign key 로 이 테이블과 연결해야할거같음
 
@@ -37,6 +38,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   };
 
   const posts = await fetchPost();
+  console.log("posts => ", posts)
   const { nickname, title, content, imageUrl, created_at, liked } = posts;
   // * 이미지 우선 한 장으로 할 지?
   // imageUrl : [' ..' , '.. '] - 이미지 아예 없는 경우 (빈배열) / 1장, 2장? 처리하기

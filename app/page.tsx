@@ -65,7 +65,7 @@ export default function Index() {
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <h2 className="mt-3">{item.title}</h2>
-                  <p>{item.content}</p>
+                  <p className="overflow-hidden whitespace-nowrap truncate ...">{item.content}</p>
                 </Link>
               </li>
             ))}
@@ -88,7 +88,7 @@ export default function Index() {
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <h2 className="mt-3">{item.title}</h2>
-                  <p>{item.content}</p>
+                  <p className="overflow-hidden whitespace-nowrap truncate ...">{item.content}</p>
                 </Link>
               </li>
             ))}

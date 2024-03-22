@@ -11,6 +11,9 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TradeData } from './_components/communityComponents/tradeSupabase';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider
 
 export default function Index() {
   //커뮤니티
@@ -40,20 +43,30 @@ export default function Index() {
   if (tradeLoading) return <div>Loading...</div>;
   if (tradeError) return <div>Error: {tradeError.message}</div>;
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
   return (
     <main>
-      <section>
-        <ul>
-          <li>
-            <Image src={visual1} alt="어서와요 해피멍생 만나서 반가워요!" className="size-full" />
-          </li>
-          <li>
-            <Image src={visual2} alt="우리모두 해피멍생 커뮤니티에서 공유해요" className="size-full" />
-          </li>
-          <li>
-            <Image src={visual3} alt="우리아이 반려용품 우리모두 해피멍터" className="size-full" />
-          </li>
-        </ul>
+      <section className="slider-container">
+        <Slider {...settings}>
+          <ul>
+            <li>
+              <Image src={visual1} alt="어서와요 해피멍생 만나서 반가워요!" className="size-full" />
+            </li>
+            <li>
+              <Image src={visual2} alt="우리모두 해피멍생 커뮤니티에서 공유해요" className="size-full" />
+            </li>
+            <li>
+              <Image src={visual3} alt="우리아이 반려용품 우리모두 해피멍터" className="size-full" />
+            </li>
+          </ul>
+        </Slider>
       </section>
       <section className="flex text-center pt-10 gap-10 px-10">
         <div className="w-2/4">

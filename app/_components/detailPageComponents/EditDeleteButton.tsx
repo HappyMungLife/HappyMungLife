@@ -1,25 +1,36 @@
 'use client';
 
-import { deleteCommunityPost } from '@/app/_api/detailPage-api';
+import { removeCommunityPost, removeTradePost } from '@/app/_api/detailPage-api';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const EditDeleteButton = ({ postId }: { postId: string }) => {
+const EditDeleteButton = ({ postId, mode }: { postId: string; mode?: string }) => {
   const router = useRouter();
 
   const handleEditClick = () => {
-    router.push(`/community/detail/${postId}/edit`); // trade 도
+    mode === 'community'
+      ? router.push(`/community/detail/${postId}/edit`)
+      : router.push(`/trade/detail/${postId}/edit`);
   };
 
   const handleDeleteClick = async () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-      try {
-        await deleteCommunityPost(postId); // 여기서 리쿼를 쓸 필요가 있을까?
-        router.replace('/community');
-      } catch (error) {
-        throw error;
+      if (mode === 'community') {
+        try {
+          await removeCommunityPost(postId);
+          router.replace('/community');
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        try {
+          await removeTradePost(postId);
+          router.replace('/trade');
+        } catch (error) {
+          throw error;
+        }
       }
-    }
+    } else return;
   };
 
   return (

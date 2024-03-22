@@ -29,8 +29,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
       if (error) throw error;
       return posts![0]; // {postId: ..., postUser: {nickname: .., }}
     } catch (error) {
-      console.error();
-      throw error;
+      console.error(error);
     }
   };
 

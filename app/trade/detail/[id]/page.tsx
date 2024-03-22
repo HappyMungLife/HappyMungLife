@@ -2,6 +2,7 @@ import { formatToLocaleDateTimeString } from '@/app/_utils/date';
 import EditDeleteButton from '@/app/_components/detailPageComponents/EditDeleteButton';
 import { createClientJs } from '@/app/_utils/supabase/clientJs';
 import NotFoundPage from '@/app/not-found';
+import SaveButton from '@/app/_components/detailPageComponents/SaveButton';
 
 export const revalidate = 0; // SSR
 
@@ -18,8 +19,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
       if (error) throw error;
       return posts![0];
     } catch (error) {
-      console.error();
-      throw error;
+      console.error(error);
     }
   };
 
@@ -63,7 +63,9 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
         <section className="flex justify-between mt-[30px] px-20 w-full">
           {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
           <EditDeleteButton postId={postId} />
-          <div className="flex gap-5"></div>
+          <div className="flex gap-5">
+            <SaveButton userId={userId} postId={postId} saved={saved} />
+          </div>
         </section>
         <section className="mt-20 px-10 w-full">
           <p>댓글 10</p>

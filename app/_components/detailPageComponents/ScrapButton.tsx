@@ -7,8 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { addScrappedPost, fetchScrappedPosts, removeScrappedPost } from '@/app/_api/detailPage-api';
-import bookMarkedImg from '@/public/images/bookmark_colored_image.png';
-import unBookMarkedImg from '@/public/images/bookmark_gray_image.png';
+// import bookMarkedImg from '@/public/images/bookmark_10320039.png';
+// import bookMarkedImg from '@/public/images/bookmark_colored_image.png';
+import bookMarkedImg from '@/public/images/bookmark_10629606.png';
+// import unBookMarkedImg from '@/public/images/bookmark_gray_image.png';
+import unBookMarkedImg from '@/public/images/bookmark_10629554.png';
 import Image from 'next/image';
 
 const ScrapButton = ({ userId, postId }: { userId: string; postId: string }) => {
@@ -73,7 +76,7 @@ const ScrapButton = ({ userId, postId }: { userId: string; postId: string }) => 
 
   return (
     <button onClick={toggleBookMarkClick} className="text-lg border-2 border-gray-300 rounded p-2">
-      <Image src={scrappedPosts?.includes(postId) ? bookMarkedImg : unBookMarkedImg} alt="bookmark_img" width={25} />
+      <Image src={scrappedPosts?.includes(postId) ? bookMarkedImg : unBookMarkedImg} alt="bookmark_img" width={23} />
     </button>
   );
 };

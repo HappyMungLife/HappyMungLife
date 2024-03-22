@@ -1,8 +1,8 @@
 import { formatToLocaleDateTimeString } from '@/app/_utils/date';
-import EditDeleteButton from '@/app/_components/detailPageComponents/EditDeleteButton';
 import { createClientJs } from '@/app/_utils/supabase/clientJs';
 import NotFoundPage from '@/app/not-found';
 import SaveButton from '@/app/_components/detailPageComponents/SaveButton';
+import PostEditDeleteButton from '@/app/_components/detailPageComponents/PostEditDeleteButton';
 
 export const revalidate = 0; // SSR
 
@@ -40,7 +40,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
     <div className="flex justify-center m-5">
       <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[720px] ">
         <div className="flex w-[1200px] mt-10 mb-3 pl-10  rounded-lg p-2">
-          <div className="flex w-10/12 items-center px-1 ">
+          <div className="flex w-11/12 items-center px-1 ">
             <p className="w-[100px] text-gray-500">중고거래</p>
             <p className="text-lg w-9/12 font-bold ">{title}</p>
             <p className="text-sm">{postedDate}</p>
@@ -62,7 +62,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">
           {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
-          <EditDeleteButton postId={postId} />
+          <PostEditDeleteButton postId={postId} />
           <div className="flex gap-5">
             <SaveButton userId={userId} postId={postId} saved={saved} />
           </div>
@@ -95,7 +95,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
               </div>
               <div className="flex justify-end gap-10 m-5">
                 <button>수정</button>
-                <button>삭제</button>
+                {/* <button>삭제</button> */}
               </div>
             </div>
           </div>

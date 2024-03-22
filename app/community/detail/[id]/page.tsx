@@ -94,8 +94,8 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
           <EditDeleteButton postId={postId} mode="community" />
           <div className="flex gap-5">
             {/* 로그인 X 상태면 눌렀을 때 로그인 후 이용해주세요 뜨게하기 */}
-            {/* <LikeButton postId={postId} userId={userId} liked={liked} />
-            <ScrapButton postId={postId} userId={userId} /> */}
+            <LikeButton postId={postId} userId={userId} liked={liked} />
+            <ScrapButton postId={postId} userId={userId} />
           </div>
         </section>
         <section className="mt-20 px-10 w-full">

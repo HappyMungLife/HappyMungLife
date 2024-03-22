@@ -10,7 +10,7 @@ const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: '해피멍생',
-  description: '강아지 커뮤니티 사이트'
+  description: '반려견 커뮤니티 사이트'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

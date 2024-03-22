@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Visual from '@/public/images/visual_1.png';
+import visual1 from '@/public/images/visual_1.png';
+import visual2 from '@/public/images/visual_2.png';
+import visual3 from '@/public/images/visual_3.png';
 import { CommunityData } from './_components/communityComponents/commumitySupabase';
 import { useEffect, useState } from 'react';
 import { formatToLocaleDateTimeString } from './_utils/date';
@@ -43,7 +45,13 @@ export default function Index() {
       <section>
         <ul>
           <li>
-            <Image src={Visual} alt="visual" className="size-full" />
+            <Image src={visual1} alt="어서와요 해피멍생 만나서 반가워요!" className="size-full" />
+          </li>
+          <li>
+            <Image src={visual2} alt="우리모두 해피멍생 커뮤니티에서 공유해요" className="size-full" />
+          </li>
+          <li>
+            <Image src={visual3} alt="우리아이 반려용품 우리모두 해피멍터" className="size-full" />
           </li>
         </ul>
       </section>

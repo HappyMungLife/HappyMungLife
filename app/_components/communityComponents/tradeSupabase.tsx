@@ -9,14 +9,14 @@ const supabaseKey =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4cGtyand6aG1pbnNoYXNtYmxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA5NDAzNDYsImV4cCI6MjAyNjUxNjM0Nn0.2yYHoq9ZMdz-YWFY036b_zHLIalxIqvsF28VStFl11w';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export const CommunityData = () => {
+export const TradeData = () => {
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<PostgrestError | null>(null);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data, error } = await supabase.from('communityPosts').select('*');
+      const { data, error } = await supabase.from('tradePosts').select('*');
       if (error) {
         setError(error);
       } else {

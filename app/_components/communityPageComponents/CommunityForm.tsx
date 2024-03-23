@@ -23,7 +23,7 @@ export const CommunityForm = () => {
   };
 
   const addImageHandler = async (e: any) => {
-    if (!imageFiles) {
+    if (!imageFiles || imageFiles.length === 0) {
       alert('이미지를 첨부해 주세요.');
       return;
     }
@@ -85,20 +85,20 @@ export const CommunityForm = () => {
 
   return (
     <form onSubmit={addPostHandler} className="w-full lg:w-2/3 h-full lg:h-80">
-      <div className="my-10 ">
-        <label className="text-2xl mr-2 w-16">제목</label>
+      <div className="my-10 flex">
+        <label className="text-xl mr-2 w-12">제목</label>
         <input
           className="max-h-8 h-8 w-full pl-2"
           type="text"
           value={title}
           onChange={titleHandler}
-          placeholder=" 제목"
+          placeholder=" 제목을 입력해 주세요"
         />
       </div>
       <div className='h-4/5' >
         <label></label>
         <textarea
-          placeholder=" 내용"
+          placeholder=" 내용을 입력해 주세요"
           name=""
           id=""
           style={{ resize: 'none' }}
@@ -109,14 +109,14 @@ export const CommunityForm = () => {
       </div>
       <div>
         <div className='flex items-center mt-8'>
-          <input type="file" multiple accept="image/*" onChange={handleImageChange} className="mr-auto" />
+          <input type="file" multiple accept="image/*" onChange={handleImageChange} className="mr-auto"  />
           <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={addImageHandler} type="button">
             이미지 업로드
           </button>
         </div>
         <div className="flex flex-wrap mt-8">
           {imageUrls.map((imageUrl, index) => (
-            <img key={index} className="w-36 h-auto mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
+            <img key={index} className="w-16 h-auto mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}
         </div>
       </div>

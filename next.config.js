@@ -3,6 +3,6 @@ const nextConfig = { logging: { fetches: { fullUrl: true } } };
 
 module.exports = {
   images: {
-    domains: ['cdn.pixabay.com']
+    domains: ['cdn.pixabay.com', 'sxnugjzhqmefhmbwwxlr.supabase.co']
   }
 };

@@ -2,7 +2,7 @@ import CommunityEditForm from '@/app/_components/communityPageComponents/Communi
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 import React from 'react';
 
-export const revalidate = 0
+export const revalidate = 0;
 
 const EditPage = async ({ params }: { params: { id: string } }) => {
   const postId = params.id;

@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { updatePostHandler } from '@/app/actions';
 
+//TODO : 이미지 수정 기능 추가해야함
+
 type CommunityEditFormProps = {
   postId: string;
   prevTitle: string;
   prevContent: string;
 };
 
-export const CommunityEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
+export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
   const router = useRouter();
   const [title, setTitle] = useState(prevTitle);
   const [content, setContent] = useState(prevContent);
@@ -64,4 +66,4 @@ export const CommunityEditForm = ({ postId, prevTitle, prevContent }: CommunityE
   );
 };
 
-export default CommunityEditForm;
+export default communityEditForm;

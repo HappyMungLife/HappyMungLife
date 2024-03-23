@@ -31,6 +31,10 @@ const Trade = () => {
     setIsActive('saved');
   };
 
+  const onClickTradeHandle = () => {
+    alert('로그인해야 쓸 수 있습니다.');
+  };
+
   return (
     <section className="w-full px-10 py-20">
       <div className="flex justify-between items-center mb-10">
@@ -48,7 +52,9 @@ const Trade = () => {
             인기순
           </button>
         </div>
-        <button className="hover:text-primaryColor">작성하기</button>
+        <button className="hover:text-primaryColor" onClick={onClickTradeHandle}>
+          작성하기
+        </button>
       </div>
       <div>
         <ul>

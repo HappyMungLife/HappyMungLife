@@ -31,7 +31,9 @@ const Community = () => {
     setIsActive('like');
   };
 
-  console.log(items);
+  const onClickWhiteHandle = () => {
+    alert('로그인해야 쓸 수 있습니다.');
+  };
 
   return (
     <section className="w-full px-10 py-20">
@@ -50,7 +52,9 @@ const Community = () => {
             인기순
           </button>
         </div>
-        <button className="hover:text-primaryColor">작성하기</button>
+        <button className="hover:text-primaryColor" onClick={onClickWhiteHandle}>
+          작성하기
+        </button>
       </div>
       <div>
         <ul>

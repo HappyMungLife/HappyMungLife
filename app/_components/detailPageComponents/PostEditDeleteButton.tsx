@@ -4,7 +4,7 @@ import { removeCommunityPost, removeTradePost } from '@/app/_api/detailPage-api'
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const EditDeleteButton = ({ postId, mode }: { postId: string; mode?: string }) => {
+const PostEditDeleteButton = ({ postId, mode }: { postId: string; mode?: string }) => {
   const router = useRouter();
 
   const handleEditClick = () => {
@@ -45,4 +45,4 @@ const EditDeleteButton = ({ postId, mode }: { postId: string; mode?: string }) =
   );
 };
 
-export default EditDeleteButton;
+export default PostEditDeleteButton;

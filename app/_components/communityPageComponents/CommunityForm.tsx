@@ -2,14 +2,18 @@
 
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const CommunityForm = () => {
   const supabase = createClientJs();
+  const router = useRouter();
   const [title, setTitle] = useState('');
-  // TODO 중고거래 페이지에서 넣으면 됨 ->'거래 희망 지역 :\n' + '가격 :\n' + '연락처 :' 
+
+  // TODO 중고거래 페이지에서 넣으면 됨 ->'거래 희망 지역 :\n' + '가격 :\n' + '연락처 :'
   const [content, setContent] = useState('');
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -44,6 +48,8 @@ export const CommunityForm = () => {
       return;
     }
 
+    setIsLoading(true);
+
     const bucket = 'community-image-bucket';
 
     const publicImageUrls = await Promise.all(
@@ -54,6 +60,7 @@ export const CommunityForm = () => {
           cacheControl: '3600',
           upsert: false
         });
+
         if (error) {
           console.error('이미지 업로드 중 오류가 발생했습니다:', error.message);
         } else {
@@ -67,6 +74,7 @@ export const CommunityForm = () => {
 
   const getImageUrl = (bucket: string, fileName: string) => {
     const { data } = supabase.storage.from(bucket).getPublicUrl(fileName);
+    setIsLoading(false);
     return data.publicUrl;
   };
 
@@ -89,7 +97,17 @@ export const CommunityForm = () => {
     const { data, error } = await supabase
       .from('communityPosts')
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
-      .select();
+      .select('*');
+
+    console.log(data);
+
+    if (data) {
+      const postId = data[0].postId;
+      router.push(`/community/detail/${postId}`);
+    } else {
+      // TODO : 에러 메세지가 필요한가?
+      console.log('데이터가 없습니다.');
+    }
 
     if (error) {
       console.error('게시물 추가 중 오류가 발생했습니다:', error.message);
@@ -105,17 +123,17 @@ export const CommunityForm = () => {
         <label className="text-xl mr-2 w-12 font-medium">제목</label>
         <input
           ref={titleRef}
-          className="max-h-8 h-8 w-full pl-2 rounded-lg"
+          className="max-h-8 h-8 w-full pl-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 "
           type="text"
           value={title}
           onChange={titleHandler}
-          placeholder=" 제목을 입력해 주세요"
+          placeholder=" 제목을 입력해 주세요."
         />
       </div>
       <div className="h-4/5">
         <textarea
-          className="h-full w-full p-2.5 rounded-lg"
-          placeholder=" 내용을 입력해 주세요"
+          className="h-full w-full p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300"
+          placeholder=" 내용을 입력해 주세요."
           name=""
           id=""
           style={{ resize: 'none' }}
@@ -132,19 +150,25 @@ export const CommunityForm = () => {
             onChange={handleImageChange}
             className="mr-auto bg-white w-auto"
           />
-          <button className="px-4 py-2 bg-primaryColor text-white rounded" onClick={addImageHandler} type="button">
+          <button
+            className="px-4 py-2 bg-primaryColor font-semibold text-white rounded"
+            onClick={addImageHandler}
+            type="button"
+          >
             이미지 업로드
           </button>
         </div>
-        <div className="flex flex-wrap mt-8">
+        <h1 className="font-semibold mt-6 mb-2">이미지 미리보기</h1>
+        {isLoading && <p>이미지 업로드 중...</p>}
+        <div className="flex flex-wrap max-h-28 h-24">
           {imageUrls.map((imageUrl, index) => (
-            <img key={index} className="w-16 h-auto mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
+            <img key={index} className="w-20 max-h-20 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}
         </div>
       </div>
       <div className="flex justify-center space-x-20 mt-12">
-        <button className="text-lg px-4 py-2 bg-primaryColor text-white rounded w-32 h-12">취소</button>
-        <button type="submit" className="text-lg px-4 py-2 bg-primaryColor text-white rounded w-32 h-12">
+        <button className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">취소</button>
+        <button type="submit" className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">
           작성
         </button>
       </div>

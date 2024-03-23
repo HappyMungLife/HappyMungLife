@@ -12,6 +12,7 @@ import { formatToLocaleDateTimeString } from './_utils/date';
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
 //Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -20,10 +21,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '@/app/_style/mainSwiper.css';
+import CommunityCommentsData from './_components/communityPageComponents/CommunityCommentsData';
+import TradeCommentData from './_components/tradePageComponents/TradeCommentData';
 
 export default function Index() {
-  //커뮤니티
   const { items, loading, error } = CommunityData();
+  const { comments } = CommunityCommentsData();
+  const { tradecomments } = TradeCommentData();
   const { tradeItems, tradeLoading, tradeError } = TradeData();
   const [topLikedItems, setTopLikedItems] = useState<any[]>([]);
   const [topSavedItems, setTopSavedItems] = useState<any[]>([]);
@@ -98,9 +102,13 @@ export default function Index() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>
-                      <p>
+                      <p className="mr-2">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <span>{item.liked}</span>
+                      </p>
+                      <p>
+                        <FontAwesomeIcon className="mr-1 text-primaryColor -scale-x-100 size-4" icon={faCommentDots} />
+                        {comments.filter((comment) => comment.postId === item.postId).length}
                       </p>
                     </div>
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
@@ -121,9 +129,13 @@ export default function Index() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>
-                      <p>
+                      <p className="mr-2">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <span>{item.saved}</span>
+                      </p>
+                      <p>
+                        <FontAwesomeIcon className="mr-1 text-primaryColor -scale-x-100 size-4" icon={faCommentDots} />
+                        {tradecomments.filter((comment) => comment.postId === item.postId).length}
                       </p>
                     </div>
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>

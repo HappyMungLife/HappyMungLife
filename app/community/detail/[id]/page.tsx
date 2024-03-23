@@ -8,6 +8,9 @@ import ScrapButton from '@/app/_components/detailPageComponents/ScrapButton';
 import LikeButton from '@/app/_components/detailPageComponents/LikeButton';
 import NotFoundPage from '@/app/not-found';
 import PostEditDeleteButton from '@/app/_components/detailPageComponents/PostEditDeleteButton';
+import CommentDeleteButton from '@/app/_components/detailPageComponents/CommentDeleteButton';
+import CommentForm from '@/app/_components/detailPageComponents/CommentForm';
+import CommentItem from '@/app/_components/detailPageComponents/CommentItem';
 
 export const revalidate = 0; // SSR
 
@@ -37,10 +40,10 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
     try {
       const { data: comments, error } = await supabase
         .from('communityComments')
-        .select('*, commentUser:users(nickname,profileImage)')
+        .select('*, commentUser:users(nickname,profileImage)') // 댓글작성자 정보도
         .eq('postId', postId);
       if (error) throw error;
-      console.log('comments![0] ', comments); // [ ] 배열 - comment[0] {commentId:.., commentUsers:{ nickname: .., }}
+      console.log('comments![0] ', comments);
       return comments;
     } catch (error) {
       console.error(error);
@@ -82,7 +85,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex justify-center m-5">
       <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[720px] ">
-        <div className="flex w-[1200px] mt-10 mb-3 pl-10  rounded-lg p-2">
+        <div className="flex w-[1200px] mt-10 mb-3 pl-10 rounded-lg p-2">
           <div className="flex w-10/12 items-center px-1 ">
             <p className="w-[100px] text-gray-500">커뮤니티</p>
             <p className="text-lg w-9/12 font-bold ">{title}</p>
@@ -113,59 +116,16 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
             <ScrapButton postId={postId} userId={userId} />
           </div>
         </section>
-        <section className="mt-20 px-10 w-full">
-          <p>댓글 10</p>
-          <hr className="bg-gray-400 w-full" />
+        <section className="mt-20 px-10 w-full flex flex-col items-center">
+          <p className="p-2 pr-[1030px] items-start">댓글 {comments?.length}</p>
+          <hr className="bg-gray-400 w-[1100px]" />
           {/* 유저 로그인 상태, 해당 유저일 시 뜨게함 */}
           <div className="my-10 flex flex-col justify-center items-center">
-            <div className="flex flex-col gap-5">
-              <textarea className="w-[1000px] h-[100px] border-2 border-gray-300 rounded-xl"></textarea>
-              <div className="flex justify-end">
-                <button className="border-2 border-gray-300 rounded p-2 w-20">등록</button>
-              </div>
-            </div>
-            {comments?.map(
-              ({ commentUser, content, created_at }: { commentUser: any; content: any; created_at: any }) => {
-                // 타입 재설정
-                const postedDate = formatToLocaleDateTimeString(created_at);
-                return (
-                  <div className="">
-                    <div className="flex gap-5 mt-7 justify-between items-center w-[1000px]">
-                      <div className="flex items-center gap-5 px-3">
-                        <img src={commentUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-12 h-12" />
-                        <p>{commentUser.nickname}</p>
-                      </div>
-                      <p className="px-3">{postedDate}</p>
-                    </div>
-                    <div className="mt-3 bg-primaryColor/30 rounded p-5 min-h-[100px]">
-                      <p>{content}</p>
-                    </div>
-                    <div className="flex justify-end gap-10 m-5">
-                      <button>수정</button>
-                      <button>삭제</button>
-                    </div>
-                  </div>
-                );
-              }
-            )}
-            {/* <div className="flex gap-5 mt-10 justify-between items-center w-[1000px]">
-                <div className="flex items-center gap-5 px-3">
-                  <img
-                    src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg"
-                    alt="userProfileImg"
-                    className="rounded-[50%] w-12 h-12"
-                  />
-                  <p>닉네임</p>
-                </div>
-                <p className="px-3">날짜</p>
-              </div>
-              <div className="mt-3 bg-primaryColor/30 rounded p-5 min-h-[100px]">
-                <p>내용</p>
-              </div>
-              <div className="flex justify-end gap-10 m-5">
-                <button>수정</button>
-                <button>삭제</button>
-              </div> */}
+            <CommentForm userId={userId} postId={postId} />
+            {comments?.map((comment) => {
+              // 타입 재설정
+              return <CommentItem comment={comment} userId={userId} />;
+            })}
           </div>
         </section>
       </div>

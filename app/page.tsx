@@ -6,8 +6,8 @@ import Image from 'next/image';
 import visual1 from '@/public/images/visual_1.png';
 import visual2 from '@/public/images/visual_2.png';
 import visual3 from '@/public/images/visual_3.png';
-import { CommunityData } from './_components/communityComponents/commumitySupabase';
-import { TradeData } from './_components/communityComponents/tradeSupabase';
+import { CommunityData } from './_api/commumityApi';
+import { TradeData } from './_api/tradeApi';
 import { formatToLocaleDateTimeString } from './_utils/date';
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

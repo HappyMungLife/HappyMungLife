@@ -5,7 +5,7 @@ import { faBookmark as faBookmarkSolid, faHeart as faHeartSolid } from '@fortawe
 import { faBookmark as faBookmarkRegular, faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { CommunityData } from '@/app/_components/communityComponents/commumitySupabase';
+import { CommunityData } from '@/app/_api/commumityApi';
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 

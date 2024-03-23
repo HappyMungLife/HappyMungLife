@@ -1,14 +1,22 @@
 'use client';
 
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const CommunityForm = () => {
   const supabase = createClientJs();
   const [title, setTitle] = useState('');
+  // TODO 중고거래 페이지에서 넣으면 됨 ->'거래 희망 지역 :\n' + '가격 :\n' + '연락처 :' 
   const [content, setContent] = useState('');
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const titleRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.focus();
+    }
+  }, []);
 
   const titleHandler = (e: any) => {
     setTitle(e.target.value);
@@ -19,17 +27,25 @@ export const CommunityForm = () => {
   };
 
   const handleImageChange = (e: any) => {
-    setImageFiles([...e.target.files]);
+    const files = e.target.files;
+
+    if (files.length > 3) {
+      alert('이미지는 최대 3개까지 첨부할 수 있습니다.');
+      e.target.value = null;
+      return;
+    }
+
+    setImageFiles([...files]);
   };
 
-  const addImageHandler = async (e: any) => {
+  const addImageHandler = async () => {
     if (!imageFiles || imageFiles.length === 0) {
       alert('이미지를 첨부해 주세요.');
       return;
     }
-    
+
     const bucket = 'community-image-bucket';
-    
+
     const publicImageUrls = await Promise.all(
       imageFiles.map(async (imageFile) => {
         const fileName = crypto.randomUUID();
@@ -75,12 +91,12 @@ export const CommunityForm = () => {
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
       .select();
 
-      if (error) {
-        console.error('게시물 추가 중 오류가 발생했습니다:', error.message);
-        alert('게시물 추가 중 오류가 발생했습니다.');
-      } else {
-        alert("게시물이 등록되었습니다.")
-      }
+    if (error) {
+      console.error('게시물 추가 중 오류가 발생했습니다:', error.message);
+      alert('게시물 추가 중 오류가 발생했습니다.');
+    } else {
+      alert('게시물이 등록되었습니다.');
+    }
   };
 
   return (
@@ -88,6 +104,7 @@ export const CommunityForm = () => {
       <div className="my-10 flex">
         <label className="text-xl mr-2 w-12 font-medium">제목</label>
         <input
+          ref={titleRef}
           className="max-h-8 h-8 w-full pl-2 rounded-lg"
           type="text"
           value={title}
@@ -95,8 +112,7 @@ export const CommunityForm = () => {
           placeholder=" 제목을 입력해 주세요"
         />
       </div>
-      <div className='h-4/5' >
-        <label></label>
+      <div className="h-4/5">
         <textarea
           className="h-full w-full p-2.5 rounded-lg"
           placeholder=" 내용을 입력해 주세요"
@@ -108,8 +124,14 @@ export const CommunityForm = () => {
         />
       </div>
       <div>
-        <div className='flex items-center mt-8'>
-          <input type="file" multiple accept="image/*" onChange={handleImageChange} className="mr-auto bg-white w-auto" />
+        <div className="flex items-center mt-8">
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={handleImageChange}
+            className="mr-auto bg-white w-auto"
+          />
           <button className="px-4 py-2 bg-primaryColor text-white rounded" onClick={addImageHandler} type="button">
             이미지 업로드
           </button>

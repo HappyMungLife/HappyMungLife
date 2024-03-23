@@ -7,6 +7,8 @@ export const CommunityForm = () => {
   const supabase = createClientJs();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const titleHandler = (e: any) => {
     setTitle(e.target.value);
@@ -16,9 +18,38 @@ export const CommunityForm = () => {
     setContent(e.target.value);
   };
 
-  const addImageHandler = (e: any) => {
-    console.log(e.target.files)
-  }
+  const handleImageChange = (e: any) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const addImageHandler = async (e: any) => {
+    if (!imageFile) {
+      alert('이미지를 첨부해 주세요.');
+      return;
+    }
+
+    const bucket = 'community-image-bucket';
+    const fileName = crypto.randomUUID();
+
+    const { error } = await supabase.storage.from(bucket).upload(fileName, imageFile, {
+      cacheControl: '3600',
+      upsert: false
+    });
+
+    if (error) {
+      console.error('이미지 업로드 중 오류가 발생했습니다:', error.message);
+    } else {
+      console.log('이미지가 성공적으로 업로드되었습니다.');
+    }
+
+    const publicImageUrl = getImageUrl(bucket, fileName);
+    setImageUrl(publicImageUrl);
+  };
+
+  const getImageUrl = (bucket: string, fileName: string) => {
+    const { data } = supabase.storage.from(bucket).getPublicUrl(fileName);
+    return data.publicUrl;
+  };
 
   const addPostHandler = async (e: any) => {
     e.preventDefault();
@@ -31,12 +62,16 @@ export const CommunityForm = () => {
       alert('내용을 입력해주세요.');
       return;
     }
+    if (!imageUrl) {
+      alert('이미지를 첨부해주세요.');
+      return;
+    }
     
 
     // TODO : 에러 처리 로직 + 유효성 검사 로직 필요
     const { data, error } = await supabase
       .from('communityPosts')
-      .insert([{ title, content, userId: '1234' }])
+      .insert([{ title, content, imageUrl: [imageUrl] , userId: '1234' }])
       .select();
   };
 
@@ -65,8 +100,11 @@ export const CommunityForm = () => {
         />
       </div>
       <div>
-        <input type="file" accept="image/*" onChange={addImageHandler} />
-        <button type="submit">이미지 업로드</button>
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+        <button onClick={addImageHandler} type="button">
+          이미지 업로드
+        </button>
+        {imageUrl && <img src={imageUrl} alt="Uploaded" />}
       </div>
       <div className="flex justify-center space-x-4">
         <button className="px-4 py-2 bg-blue-500 text-white rounded">취소</button>

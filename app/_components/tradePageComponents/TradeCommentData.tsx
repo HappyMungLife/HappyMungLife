@@ -9,7 +9,7 @@ const TradeCommentData = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data, error } = await supabase.from('TradeComments').select('*');
+      const { data, error } = await supabase.from('tradeComments').select('*');
       if (error) {
         setTradeCommentsError(error);
       } else {

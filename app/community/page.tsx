@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { CommunityData } from '@/app/_components/communityPageComponents/commumityData';
+import { CommunityData } from '@/app/_components/communityPageComponents/CommumityData';
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 import CommunityCommentsData from '../_components/communityPageComponents/CommunityCommentsData';
@@ -83,7 +83,10 @@ const Community = () => {
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <p className="mr-3">{item.liked}</p>
                         <p>
-                          <FontAwesomeIcon className="mr-1 text-primaryColor -scale-x-100" icon={faCommentDots} />
+                          <FontAwesomeIcon
+                            className="mr-1 text-primaryColor -scale-x-100 size-4"
+                            icon={faCommentDots}
+                          />
                           {comments.filter((comment) => comment.postId === item.postId).length}
                         </p>
                       </div>
@@ -94,10 +97,10 @@ const Community = () => {
                     <h3 className="text-2xl font-semibold">{item.title}</h3>
                     <p className="mt-2">{item.content}</p>
                   </div>
-                  <button className="w-4 absolute right-0 top-0">
-                    <FontAwesomeIcon className="size-5" icon={faBookmarkRegular} />
+                  <button className="w-4 absolute right-0 top-0 text-primaryColor">
+                    <FontAwesomeIcon className="size-5 " icon={faBookmarkRegular} />
                   </button>
-                  {/* <button className="w-4 absolute right-0 top-0 text-primaryColor">
+                  {/* <button className="w-4 absolute right-0 top-0 ">
                     <FontAwesomeIcon className="size-5" icon={faBookmarkSolid} />
                   </button> */}
                 </div>

@@ -2,15 +2,17 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartRegular, faCommentDots } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { TradeData } from '@/app/_components/communityComponents/tradeSupabase';
+import { TradeData } from '@/app/_components/tradePageComponents/TradeData';
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
+import TradeCommentData from '../_components/tradePageComponents/TradeCommentData';
 
 const Trade = () => {
   const { tradeItems, tradeLoading, tradeError } = TradeData();
+  const { tradecomments } = TradeCommentData();
   const [sortedItems, setSortedItems] = useState<any[]>([]);
   const [isActive, setIsActive] = useState('latest');
 
@@ -77,16 +79,23 @@ const Trade = () => {
                         <span>{item.liked}</span>
                       </p>
                     </div>
-                    <time className="text-[#ccc] mr-14">{formatToLocaleDateTimeString(item.created_at)}</time>
+                    <time className="text-[#ccc] ml-auto mr-5">{formatToLocaleDateTimeString(item.created_at)}</time>
+                    <div className="flex gap-2">
+                      <button className="w-4 flex gap-1 items-center mr-5">
+                        <FontAwesomeIcon className="size-5 text-primaryColor" icon={faHeartRegular} />
+                        <p>{item.saved}</p>
+                      </button>
+                      <p className="flex items-center">
+                        <FontAwesomeIcon className="mr-1 text-primaryColor -scale-x-100 size-5" icon={faCommentDots} />
+                        {tradecomments.filter((comment) => comment.postId === item.postId).length}
+                      </p>
+                    </div>
                   </div>
                   <div className="mt-3">
                     <h3 className="text-2xl font-semibold">{item.title}</h3>
                     <p className="mt-2">{item.content}</p>
                   </div>
-                  <button className="w-4 absolute right-0 top-0 flex gap-1 items-center mr-5">
-                    <FontAwesomeIcon className="size-5 text-primaryColor" icon={faHeartRegular} />
-                    <p>{item.saved}</p>
-                  </button>
+
                   {/* <button className="w-4 absolute right-0 top-0 flex gap-1 items-center">
                       <FontAwesomeIcon className="size-5 text-primaryColor" icon={faHeartSolid} />
                       <p>{item.saved}</p>

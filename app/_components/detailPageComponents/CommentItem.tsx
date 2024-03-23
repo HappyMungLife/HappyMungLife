@@ -3,7 +3,8 @@
 import { formatToLocaleDateTimeString } from '@/app/_utils/date';
 import React, { useState } from 'react';
 import CommentDeleteButton from './CommentDeleteButton';
-import { updateComment } from '@/app/_api/comment-api';
+import useUpdateCommunityCommentMutation from '@/app/_hooks/useUpdateCommunityCommentMutation';
+import useUpdateTradeCommentMutation from '@/app/_hooks/useUpdateTradeCommentMutation';
 
 interface CommentUserType {
   nickname: string;
@@ -19,12 +20,17 @@ interface CommentType {
   commentUser: CommentUserType;
 }
 
-const CommentItem = ({ comment, userId }: { comment: CommentType; userId: string }) => {
+const CommentItem = ({ comment, userId, mode }: { comment: CommentType; userId: string; mode: string }) => {
   const { commentId, commentUser, content, created_at, userId: commentUserId } = comment;
   const postedDate = formatToLocaleDateTimeString(created_at);
 
   const [editing, setEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(content);
+
+  const { updateComment } =
+    mode === 'community'
+      ? useUpdateCommunityCommentMutation(commentId, editedContent)
+      : useUpdateTradeCommentMutation(commentId, editedContent);
 
   const handleSetEditClick = async () => {
     setEditing(true);
@@ -32,21 +38,20 @@ const CommentItem = ({ comment, userId }: { comment: CommentType; userId: string
 
   const handleCancelEditClick = () => {
     setEditing(false);
+    setEditedContent(content);
   };
 
   const handleEditedContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEditedContent(e.target.value);
   };
 
-  const handleSubmitEditClick = async () => {
-    try {
-      await updateComment(commentId, editedContent);
-      setEditing(false);
-      // 수정 후 새 코멘트 뜨게하기 - 새로고침 말고 이 컴포넌트만 렌더링?
-      window.location.reload();
-    } catch (error) {
-      throw error;
+  const handleEditedCommentSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!editedContent.trim()) {
+      return alert('댓글을 입력해주세요.');
     }
+    updateComment();
+    setEditing(false);
   };
 
   return (
@@ -58,10 +63,11 @@ const CommentItem = ({ comment, userId }: { comment: CommentType; userId: string
         </div>
         <p className="px-3">{postedDate}</p>
       </div>
+      {/* 해당 댓글작성자일때 수정/삭제 버튼 뜨게하기 - userId === commentUserId ?*/}
       {editing ? (
         <>
-          <div className="mt-2 bg-primaryColor/30 rounded-3xl p-5 w-[1000px] min-h-[100px]">
-            <form>
+          <form onSubmit={handleEditedCommentSubmit}>
+            <div className="mt-2 bg-primaryColor/30 rounded-3xl p-5 w-[1000px] min-h-[100px]">
               <textarea
                 value={editedContent}
                 onChange={(e) => {
@@ -72,12 +78,12 @@ const CommentItem = ({ comment, userId }: { comment: CommentType; userId: string
               >
                 {content}
               </textarea>
-            </form>
-          </div>
-          <div className="flex justify-end gap-10 m-5">
-            <button onClick={handleCancelEditClick}>취소</button>
-            <button onClick={handleSubmitEditClick}>등록</button>
-          </div>
+            </div>
+            <div className="flex justify-end gap-10 m-5">
+              <button onClick={handleCancelEditClick}>취소</button>
+              <button type="submit">등록</button>
+            </div>
+          </form>
         </>
       ) : (
         <>
@@ -86,9 +92,8 @@ const CommentItem = ({ comment, userId }: { comment: CommentType; userId: string
           </div>
           <div className="flex justify-end gap-10 m-5">
             <button onClick={handleSetEditClick}>수정</button>
-            <CommentDeleteButton commentId={commentId} />
+            <CommentDeleteButton commentId={commentId} mode={mode} />
           </div>
-          {/* 해당 댓글작성자일때 수정/삭제 버튼 뜨게하기 - userId === commentUserId ?*/}
         </>
       )}
     </div>

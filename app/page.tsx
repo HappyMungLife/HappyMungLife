@@ -38,7 +38,7 @@ export default function Index() {
 
   useEffect(() => {
     if (tradeItems) {
-      const sortedByLikes = [...tradeItems].sort((a, b) => b.liked - a.liked);
+      const sortedByLikes = [...tradeItems].sort((a, b) => b.saved - a.saved);
       const top3Items = sortedByLikes.slice(0, 3);
       setTopSavedItems(top3Items);
     }

@@ -23,7 +23,7 @@ const Nav = () => {
           onClick={() => onHandleClick('trade')}
           className={`hover:text-primaryColor ${isActive === 'trade' ? 'active' : ''}`}
         >
-          <Link href="/trade">중고거래</Link>
+          <Link href="/trade">해피멍터</Link>
         </li>
         <li
           onClick={() => onHandleClick('meal')}

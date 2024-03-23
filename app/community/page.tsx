@@ -2,15 +2,21 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as faBookmarkSolid, faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark as faBookmarkRegular, faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import {
+  faBookmark as faBookmarkRegular,
+  faHeart as faHeartRegular,
+  faCommentDots
+} from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { CommunityData } from '@/app/_api/commumityApi';
+import { CommunityData } from '@/app/_components/communityPageComponents/commumityData';
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
+import CommunityCommentsData from '../_components/communityPageComponents/CommunityCommentsData';
 
 const Community = () => {
   const { items, loading, error } = CommunityData();
+  const { comments } = CommunityCommentsData();
   const [sortedItems, setSortedItems] = useState<any[]>([]);
   const [isActive, setIsActive] = useState('latest');
 
@@ -73,10 +79,14 @@ const Community = () => {
                     <div className="flex">
                       {/* <p>닉네임이미지</p> */}
                       <h2 className="mr-3">{item.userId}</h2>
-                      <p>
+                      <div className="flex items-center">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
-                        <span>{item.liked}</span>
-                      </p>
+                        <p className="mr-3">{item.liked}</p>
+                        <p>
+                          <FontAwesomeIcon className="mr-1 text-primaryColor -scale-x-100" icon={faCommentDots} />
+                          {comments.filter((comment) => comment.postId === item.postId).length}
+                        </p>
+                      </div>
                     </div>
                     <time className="text-[#ccc] mr-10">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>

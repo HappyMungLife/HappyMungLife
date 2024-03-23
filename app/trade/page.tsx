@@ -5,12 +5,13 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { TradeData } from '@/app/_api/tradeApi';
+import { TradeData } from '@/app/_components/tradePageComponents/tradeData';
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 
 const Trade = () => {
   const { tradeItems, tradeLoading, tradeError } = TradeData();
+
   const [sortedItems, setSortedItems] = useState<any[]>([]);
   const [isActive, setIsActive] = useState('latest');
 

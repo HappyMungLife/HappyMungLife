@@ -94,7 +94,7 @@ export default function Index() {
           <ul className="bg-secondaryColor rounded-xl mt-5 mb-10 pt-10 px-10 pb-5">
             {topLikedItems.map((item) => (
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">
-                <Link href="/" className="p-7 block">
+                <Link href={`/community/detail/${item.postId}`} className="p-7 block">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>
@@ -117,7 +117,7 @@ export default function Index() {
           <ul className="bg-secondaryColor rounded-xl mt-5 mb-10 pt-10 px-10 pb-5">
             {topSavedItems.map((item) => (
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">
-                <Link href="/" className="p-7 block">
+                <Link href={`/trade/detail/${item.postId}`} className="p-7 block">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>

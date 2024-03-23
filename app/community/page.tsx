@@ -31,6 +31,10 @@ const Community = () => {
     setIsActive('like');
   };
 
+  const onClickWhiteHandle = () => {
+    alert('로그인해야 쓸 수 있습니다.');
+  };
+
   return (
     <section className="w-full px-10 py-20">
       <div className="flex justify-between items-center mb-10">
@@ -48,17 +52,19 @@ const Community = () => {
             인기순
           </button>
         </div>
-        <button className="hover:text-primaryColor">작성하기</button>
+        <button className="hover:text-primaryColor" onClick={onClickWhiteHandle}>
+          작성하기
+        </button>
       </div>
       <div>
         <ul>
           {sortedItems.map((item) => (
             <li key={item.postId} className="flex border border-primaryColor rounded-2xl mb-5">
-              <Link href="" className="flex p-10 w-full">
+              <Link href={`community/detail/${item.postId}`} className="flex items-center p-10 w-full">
                 <figure>
                   {item.imageUrl ? (
-                    <figcaption>
-                      <Image src={item.imageUrl} alt={item.userId} />
+                    <figcaption className="mr-10">
+                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={0} />
                     </figcaption>
                   ) : null}
                 </figure>

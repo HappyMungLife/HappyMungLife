@@ -57,7 +57,7 @@ export default function Index() {
             spaceBetween={0}
             centeredSlides={true}
             autoplay={{
-              delay: 10000,
+              delay: 4000,
               disableOnInteraction: false
             }}
             pagination={{
@@ -113,7 +113,7 @@ export default function Index() {
           </ul>
         </div>
         <div className="w-2/4">
-          <h2 className="text-xl font-semibold">중고거래</h2>
+          <h2 className="text-xl font-semibold">해피멍터</h2>
           <ul className="bg-secondaryColor rounded-xl mt-5 mb-10 pt-10 px-10 pb-5">
             {topSavedItems.map((item) => (
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">

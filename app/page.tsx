@@ -1,14 +1,25 @@
 'use client';
 
-import Image from 'next/image';
-import Visual from '@/public/images/visual_1.png';
-import { CommunityData } from './_components/communityComponents/commumitySupabase';
-import { useEffect, useState } from 'react';
-import { formatToLocaleDateTimeString } from './_utils/date';
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
+import visual1 from '@/public/images/visual_1.png';
+import visual2 from '@/public/images/visual_2.png';
+import visual3 from '@/public/images/visual_3.png';
+import { CommunityData } from './_components/communityComponents/commumitySupabase';
 import { TradeData } from './_components/communityComponents/tradeSupabase';
+import { formatToLocaleDateTimeString } from './_utils/date';
+//Font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+//Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import '@/app/_style/mainSwiper.css';
 
 export default function Index() {
   //커뮤니티
@@ -41,11 +52,41 @@ export default function Index() {
   return (
     <main>
       <section>
-        <ul>
-          <li>
-            <Image src={Visual} alt="visual" className="size-full" />
-          </li>
-        </ul>
+        <div>
+          <Swiper
+            spaceBetween={0}
+            centeredSlides={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false
+            }}
+            pagination={{
+              clickable: true
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Image src={visual1} alt="어서와요 해피멍생 만나서 반가워요!" className="size-full" />
+              <h2>
+                어서와요 해피멍생<span>만나서 반가워요!</span>
+              </h2>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={visual2} alt="우리모두 해피멍생 커뮤니티에서 공유해요" className="size-full" />
+              <h2 className="community">
+                우리모두 해피멍생<span>커뮤니티에서 공유해요!</span>
+              </h2>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={visual3} alt="우리아이 반려용품 우리모두 해피멍터" className="size-full" />
+              <h2 className="trade">
+                우리아이 반려용품<span>이제부터 해피멍터</span>
+              </h2>
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </section>
       <section className="flex text-center pt-10 gap-10 px-10">
         <div className="w-2/4">
@@ -65,14 +106,14 @@ export default function Index() {
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <h2 className="mt-3">{item.title}</h2>
-                  <p>{item.content}</p>
+                  <p className="overflow-hidden whitespace-nowrap truncate ...">{item.content}</p>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="w-2/4">
-          <h2 className="text-xl font-semibold">중고거래</h2>
+          <h2 className="text-xl font-semibold">해피멍터</h2>
           <ul className="bg-secondaryColor rounded-xl mt-5 mb-10 pt-10 px-10 pb-5">
             {topSavedItems.map((item) => (
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">
@@ -88,7 +129,7 @@ export default function Index() {
                     <time className="text-[#ccc] text-sm">{formatToLocaleDateTimeString(item.created_at)}</time>
                   </div>
                   <h2 className="mt-3">{item.title}</h2>
-                  <p>{item.content}</p>
+                  <p className="overflow-hidden whitespace-nowrap truncate ...">{item.content}</p>
                 </Link>
               </li>
             ))}

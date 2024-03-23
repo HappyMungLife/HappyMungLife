@@ -28,7 +28,7 @@ const Trade = () => {
 
   const onClickLikeHandle = () => {
     setSortedItems([...tradeItems].sort((a, b) => b.saved - a.saved));
-    setIsActive('like');
+    setIsActive('saved');
   };
 
   return (

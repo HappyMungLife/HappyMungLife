@@ -27,6 +27,7 @@ const Community = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  console.log(comments);
   const onClickLatestHandle = () => {
     setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
     setIsActive('latest');
@@ -77,8 +78,6 @@ const Community = () => {
                 <div className="w-full relative">
                   <div className="flex items-center justify-between">
                     <div className="flex">
-                      {/* <p>닉네임이미지</p> */}
-                      <h2 className="mr-3">{item.userId}</h2>
                       <div className="flex items-center">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <p className="mr-3">{item.liked}</p>

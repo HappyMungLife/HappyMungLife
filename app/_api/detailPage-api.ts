@@ -65,13 +65,13 @@ export const removeLikedPost = async (userId: string, postId: string) => {
 };
 
 // 좋아요 카운트수 가져오기
-// export const fetchLikesCount = async (postId: string) => {
-//   const { data, error } = await supabase.from('communityPosts').select('liked').eq('postId', postId);
-//   if (error) {
-//     console.error(`Failed to fetch data from Supabase - ${error}`);
-//   }
-//   return data![0].liked;
-// };
+export const fetchLikesCount = async (postId: string) => {
+  const { data, error } = await supabase.from('communityPosts').select('liked').eq('postId', postId);
+  if (error) {
+    console.error(`Failed to fetch data from Supabase - ${error}`);
+  }
+  return data![0].liked;
+};
 
 export const increaseLikesCount = async (postId: string) => {
   const { error } = await supabase.rpc('increment_likes_count', { post_id: postId });
@@ -110,6 +110,15 @@ export const removeStoredPost = async (userId: string, postId: string) => {
   if (error) {
     console.error(`Failed to remove data from Supabase - ${error.message}`);
   }
+};
+
+// 찜 카운트수 가져오기
+export const fetchSaveCount = async (postId: string) => {
+  const { data, error } = await supabase.from('tradePosts').select('saved').eq('postId', postId);
+  if (error) {
+    console.error(`Failed to fetch data from Supabase - ${error}`);
+  }
+  return data![0].saved;
 };
 
 // 찜 수 + 1

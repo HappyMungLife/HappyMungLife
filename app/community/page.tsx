@@ -78,6 +78,7 @@ const Community = () => {
                 <div className="w-full relative">
                   <div className="flex items-center justify-between">
                     <div className="flex">
+                      <h2 className="mr-3">{item.userId}</h2>
                       <div className="flex items-center">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <p className="mr-3">{item.liked}</p>

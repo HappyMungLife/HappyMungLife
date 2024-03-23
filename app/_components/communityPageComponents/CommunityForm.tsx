@@ -70,7 +70,6 @@ export const CommunityForm = () => {
       return;
     }
 
-    // TODO : 에러 처리 로직 + 유효성 검사 로직 필요
     const { data, error } = await supabase
       .from('communityPosts')
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
@@ -85,27 +84,27 @@ export const CommunityForm = () => {
   };
 
   return (
-    <form onSubmit={addPostHandler} className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64">
-      <div className="my-10">
-        <label className="text-2xl mr-5">제목</label>
+    <form onSubmit={addPostHandler} className="w-full lg:w-2/3 h-full lg:h-80">
+      <div className="my-10 ">
+        <label className="text-2xl mr-2 w-16">제목</label>
         <input
-          className="max-h-8 h-8 max-w-2xl w-full"
+          className="max-h-8 h-8 w-full pl-2"
           type="text"
           value={title}
           onChange={titleHandler}
-          placeholder="제목"
+          placeholder=" 제목"
         />
       </div>
-      <div>
+      <div className='h-4/5' >
         <label></label>
         <textarea
-          placeholder="내용"
+          placeholder=" 내용"
           name=""
           id=""
           style={{ resize: 'none' }}
           value={content}
           onChange={contentHandler}
-          className="h-full w-full"
+          className="h-full w-full p-2.5"
         />
       </div>
       <div>
@@ -121,9 +120,9 @@ export const CommunityForm = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center space-x-4 mt-12">
-        <button className="px-4 py-2 bg-blue-500 text-white rounded">취소</button>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+      <div className="flex justify-center space-x-20 mt-12">
+        <button className="text-lg px-4 py-2 bg-blue-500 text-white rounded w-32 h-12">취소</button>
+        <button type="submit" className="text-lg px-4 py-2 bg-blue-500 text-white rounded w-32 h-12">
           작성
         </button>
       </div>

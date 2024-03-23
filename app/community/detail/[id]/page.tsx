@@ -33,12 +33,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
 
   const posts = await fetchPost();
   const { title, content, imageUrl, created_at, postUser } = posts ? posts : '';
-  // * 이미지 우선 한 장으로 할 지?
-  // imageUrl : [' ..' , '.. '] - 이미지 아예 없는 경우 (빈배열) / 1장, 2장? 처리하기
   const postedDate = formatToLocaleDateTimeString(created_at);
-
-  // NOTE 이미지 하나 가져오기
-  const firstImgUrl = imageUrl ? imageUrl![0] : ''; // 이미지 없는 경우 처리해주기
 
   if (!posts) {
     return <NotFoundPage />;
@@ -61,8 +56,36 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         </div>
         <hr className="bg-gray-300/70 w-[1150px]" />
         <section className="m-20 w-full">
-          <div className="flex justify-center">
-            {imageUrl && <img src={firstImgUrl} alt="uploaded-image" className="max-w-[800px]" />}
+          <div className="flex flex-col gap-10 justify-center">
+            {/* <section> */}
+            {/* <Swiper
+                spaceBetween={0}
+                centeredSlides={true}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false
+                }}
+                pagination={{
+                  clickable: true
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              > */}
+            {imageUrl?.map(
+              (url: string) => {
+                return (
+                  <img src={url} alt="uploaded-image" className="max-w-[650px]" />
+                  // <div>
+                  // <SwiperSlide>}</SwiperSlide>
+                );
+              }
+              // </div>
+            )}
+            {/* )} */}
+            {/* </Swiper> */}
+            {/* </section> */}
+            {/* <img src={firstImgUrl} alt="uploaded-image" className="max-w-[650px]" />} */}
           </div>
           <div className="my-10 flex justify-center">
             <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>

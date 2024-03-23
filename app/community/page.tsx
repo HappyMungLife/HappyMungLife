@@ -31,6 +31,8 @@ const Community = () => {
     setIsActive('like');
   };
 
+  console.log(items);
+
   return (
     <section className="w-full px-10 py-20">
       <div className="flex justify-between items-center mb-10">
@@ -54,11 +56,11 @@ const Community = () => {
         <ul>
           {sortedItems.map((item) => (
             <li key={item.postId} className="flex border border-primaryColor rounded-2xl mb-5">
-              <Link href="" className="flex p-10 w-full">
-                <figure>
+              <Link href="" className="flex items-center p-10 w-full">
+                <figure className="mr-10">
                   {item.imageUrl ? (
                     <figcaption>
-                      <Image src={item.imageUrl} alt={item.userId} />
+                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={100} />
                     </figcaption>
                   ) : null}
                 </figure>

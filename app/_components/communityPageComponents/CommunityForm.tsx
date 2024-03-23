@@ -75,6 +75,13 @@ export const CommunityForm = () => {
       .from('communityPosts')
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
       .select();
+
+      if (error) {
+        console.error('게시물 추가 중 오류가 발생했습니다:', error.message);
+        alert('게시물 추가 중 오류가 발생했습니다.');
+      } else {
+        alert("게시물이 등록되었습니다.")
+      }
   };
 
   return (

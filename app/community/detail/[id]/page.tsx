@@ -40,10 +40,10 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
     try {
       const { data: comments, error } = await supabase
         .from('communityComments')
-        .select('*, commentUser:users(nickname,profileImage)') // 댓글작성자 정보도
-        .eq('postId', postId);
+        .select('*, commentUser:users(nickname,profileImage)')
+        .eq('postId', postId)
+        .order('created_at', { ascending: true });
       if (error) throw error;
-      console.log('comments![0] ', comments);
       return comments;
     } catch (error) {
       console.error(error);
@@ -101,7 +101,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         <hr className="bg-gray-300/70 w-[1150px]" />
         <section className="m-20 w-full">
           <div className="flex justify-center">
-            {imageUrl && <img src={firstImgUrl} alt="업로드한이미지" width={400} />}
+            {imageUrl && <img src={firstImgUrl} alt="uploaded-image" className="max-w-[800px]" />}
           </div>
           <div className="my-10 flex justify-center">
             <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>

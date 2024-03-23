@@ -1,19 +1,25 @@
 'use client';
 
+import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import visual1 from '@/public/images/visual_1.png';
 import visual2 from '@/public/images/visual_2.png';
 import visual3 from '@/public/images/visual_3.png';
 import { CommunityData } from './_components/communityComponents/commumitySupabase';
-import { useEffect, useState } from 'react';
-import { formatToLocaleDateTimeString } from './_utils/date';
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TradeData } from './_components/communityComponents/tradeSupabase';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider
+import { formatToLocaleDateTimeString } from './_utils/date';
+//Font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+//Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import '@/app/_style/mainSwiper.css';
 
 export default function Index() {
   //커뮤니티
@@ -43,30 +49,44 @@ export default function Index() {
   if (tradeLoading) return <div>Loading...</div>;
   if (tradeError) return <div>Error: {tradeError.message}</div>;
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
   return (
     <main>
-      <section className="slider-container">
-        <Slider {...settings}>
-          <ul>
-            <li>
+      <section>
+        <div>
+          <Swiper
+            spaceBetween={0}
+            centeredSlides={true}
+            autoplay={{
+              delay: 10000,
+              disableOnInteraction: false
+            }}
+            pagination={{
+              clickable: true
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
               <Image src={visual1} alt="어서와요 해피멍생 만나서 반가워요!" className="size-full" />
-            </li>
-            <li>
+              <h2>
+                어서와요 해피멍생<span>만나서 반가워요!</span>
+              </h2>
+            </SwiperSlide>
+            <SwiperSlide>
               <Image src={visual2} alt="우리모두 해피멍생 커뮤니티에서 공유해요" className="size-full" />
-            </li>
-            <li>
+              <h2 className="community">
+                우리모두 해피멍생<span>커뮤니티에서 공유해요!</span>
+              </h2>
+            </SwiperSlide>
+            <SwiperSlide>
               <Image src={visual3} alt="우리아이 반려용품 우리모두 해피멍터" className="size-full" />
-            </li>
-          </ul>
-        </Slider>
+              <h2 className="trade">
+                우리아이 반려용품<span>이제부터 해피멍터</span>
+              </h2>
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </section>
       <section className="flex text-center pt-10 gap-10 px-10">
         <div className="w-2/4">

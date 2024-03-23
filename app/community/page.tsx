@@ -57,10 +57,10 @@ const Community = () => {
           {sortedItems.map((item) => (
             <li key={item.postId} className="flex border border-primaryColor rounded-2xl mb-5">
               <Link href="" className="flex items-center p-10 w-full">
-                <figure className="mr-10">
+                <figure>
                   {item.imageUrl ? (
-                    <figcaption>
-                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={100} />
+                    <figcaption className="mr-10">
+                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={0} />
                     </figcaption>
                   ) : null}
                 </figure>

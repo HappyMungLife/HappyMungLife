@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import unSavedImg from '@/public/images/heart_833300.png';
-import savedImg from '@/public/images/heart_833472.png';
+import unSavedImg from '@/public/images/heart.png';
+import savedImg from '@/public/images/heart-fill.png';
 import Image from 'next/image';
 import {
   addStoredPost,

@@ -1,17 +1,10 @@
 'use client';
 
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faBookmark as solidBookMark } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark as regularBookMark } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { addScrappedPost, fetchScrappedPosts, removeScrappedPost } from '@/app/_api/detailPage-api';
-// import bookMarkedImg from '@/public/images/bookmark_10320039.png';
-// import bookMarkedImg from '@/public/images/bookmark_colored_image.png';
-import bookMarkedImg from '@/public/images/bookmark_10629606.png';
-// import unBookMarkedImg from '@/public/images/bookmark_gray_image.png';
-import unBookMarkedImg from '@/public/images/bookmark_10629554.png';
+import bookMarkedImg from '@/public/images/bookmark-fill.png';
+import unBookMarkedImg from '@/public/images/bookmark.png';
 import Image from 'next/image';
 
 const ScrapButton = ({ userId, postId }: { userId: string; postId: string }) => {

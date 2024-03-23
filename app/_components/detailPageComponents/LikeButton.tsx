@@ -3,10 +3,8 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React from 'react';
 import Image from 'next/image';
-// import likedImg from '@/public/images/like_colored_image.png';
-import likedImg from '@/public/images/rating_2636589.png';
-// import nonLikedImg from '@/public/images/like_gray_image.png';
-import nonLikedImg from '@/public/images/rating_2636609.png';
+import likedImg from '@/public/images/thumbs-up-fill.png';
+import nonLikedImg from '@/public/images/thumbs-up.png';
 import {
   addLikedPost,
   decreaseLikesCount,

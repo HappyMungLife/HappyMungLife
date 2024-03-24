@@ -11,9 +11,9 @@ module.exports = {
           'background-hover': 'hsl(var(--btn-background-hover))'
         },
         primaryColor: '#99ccff',
-        secondaryColor: '#ebf5ff'
+        secondaryColor: '#ebf5ff',
       }
     }
   },
-  plugins: []
+  plugins: [require('daisyui')]
 };

@@ -56,7 +56,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
             {imageUrl && <img src={firstImgUrl} alt="uploaded-image" width={400} />}
           </div>
           <div className="my-10 flex justify-center">
-            <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
+            <p style={{whiteSpace: 'pre-line'}} className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
           </div>
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">

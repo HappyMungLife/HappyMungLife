@@ -43,6 +43,10 @@ export const TradeEditForm = ({ postId, prevTitle, prevContent, prevImageUrls }:
     setImageFiles([...files]);
   };
 
+  const cancelHandler = () => {
+    router.push('/community');
+  };
+
   const addImageHandler = async () => {
     if (!imageFiles || imageFiles.length === 0) {
       alert('이미지를 첨부해 주세요.');
@@ -135,7 +139,13 @@ export const TradeEditForm = ({ postId, prevTitle, prevContent, prevImageUrls }:
         </div>
       </div>
       <div className="flex justify-center space-x-20 mt-24">
-        <button className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">취소</button>
+        <button
+          type="button"
+          onClick={cancelHandler}
+          className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12"
+        >
+          취소
+        </button>
         <button type="submit" className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">
           작성
         </button>

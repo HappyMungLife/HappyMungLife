@@ -8,13 +8,12 @@ export const CommunityForm = () => {
   const supabase = createClientJs();
   const router = useRouter();
   const [title, setTitle] = useState('');
-
-  // TODO 중고거래 페이지에서 넣으면 됨 ->'거래 희망 지역 :\n' + '가격 :\n' + '연락처 :'
   const [content, setContent] = useState('');
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
+
 
   useEffect(() => {
     if (titleRef.current) {
@@ -98,7 +97,7 @@ export const CommunityForm = () => {
       .from('communityPosts')
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
       .select('*');
-      
+
     if (data) {
       const postId = data[0].postId;
       router.push(`/community/detail/${postId}`);

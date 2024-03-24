@@ -8,7 +8,7 @@ export const TradeForm = () => {
   const supabase = createClientJs();
   const router = useRouter();
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('거래 희망 지역 :\n' + '가격 :\n' + '연락처 :');
+  const [content, setContent] = useState('- 거래 희망 지역 : \n' + '- 가격 : \n' + '- 연락처 : 010-\n' + '- 내용 : ');
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);

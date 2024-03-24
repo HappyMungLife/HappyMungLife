@@ -9,17 +9,18 @@ type CommunityEditFormProps = {
   postId: string;
   prevTitle: string;
   prevContent: string;
+  prevImageUrls: string[]
 };
 
 const supabase = createClientJs();
 
-export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
+export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrls }: CommunityEditFormProps) => {
   const router = useRouter();
   const [title, setTitle] = useState(prevTitle);
   const [content, setContent] = useState(prevContent);
   const [isLoading, setIsLoading] = useState(false);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [imageUrls, setImageUrls] = useState<string[]>([...prevImageUrls]);
   const titleRef = useRef<HTMLInputElement>(null);
 
   const titleHandler = (e: any) => {

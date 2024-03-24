@@ -14,10 +14,10 @@ export interface userValidate {
 
 
 export default function Home() {
-  const [password,setPassword]= useState("")
+  // const [password,setPassword]= useState("")
   const [passwordCheck,setPasswordCheck]= useState("")
-  const [email,setEmail]= useState("")
-  const [nickname,setNickname]= useState("")
+  // const [email,setEmail]= useState("")
+  // const [nickname,setNickname]= useState("")
 
 
   const onSubmitSignUpHandler =async(e: FormEvent<HTMLFormElement>) =>{
@@ -26,6 +26,8 @@ export default function Home() {
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+    const nickname = formData.get('nickname') as string;
+
 console.log(password.length)
 
   if(validation({ email, password, passwordCheck, nickname })){
@@ -33,7 +35,18 @@ console.log(password.length)
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
+      // options:{
+      //   data:{nickname, userId: email}
+      // }
     })
+
+    const addUserInfo = async () => {
+      const { error:insertError } = await supabase.from('users').insert({ userId: email, nickname: nickname });
+      if (error) {
+        console.error(`Failed to insert data to Supabase - ${error.message}`);
+      }
+    }
+    addUserInfo();
 
   }
 

@@ -19,9 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header />
         <Nav />
-        <main>
-          <QueryProvider>{children}</QueryProvider>
-        </main>
+        <QueryProvider>{children}</QueryProvider>
         <Footer />
       </body>
     </html>

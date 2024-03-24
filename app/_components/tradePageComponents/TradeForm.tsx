@@ -101,7 +101,6 @@ export const TradeForm = () => {
       const postId = data[0].postId;
       router.push(`/trade/detail/${postId}`);
     } else {
-      // TODO : 에러 메세지가 필요한가?
       console.log('데이터가 없습니다.');
     }
 
@@ -126,7 +125,7 @@ export const TradeForm = () => {
           placeholder=" 제목을 입력해 주세요."
         />
       </div>
-      <div className="h-4/5">
+      <div className="h-[300px]">
         <textarea
           className="h-full w-full p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300"
           placeholder=" 내용을 입력해 주세요."
@@ -154,16 +153,15 @@ export const TradeForm = () => {
             이미지 업로드
           </button>
         </div>
-        <h1 className="font-semibold mt-6 mb-2">이미지 미리보기</h1>
-
+        <h1 className="font-semibold mt-6 mb-2 text-lg">이미지 미리보기</h1>
         <div className="flex flex-wrap max-h-28 h-24">
-          <h1 className="flex items-center">{isLoading && <p>이미지 업로드 중...</p>}</h1>
           {imageUrls.map((imageUrl, index) => (
-            <img key={index} className="w-20 max-h-20 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
+            <img key={index} className="w-32 h-32 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}
+          <h1 className="flex items-center ml-2 font-semibold">{isLoading && <p> 🐾 이미지 업로드 중...</p>}</h1>
         </div>
       </div>
-      <div className="flex justify-center space-x-20 mt-12">
+      <div className="flex justify-center space-x-20 mt-24">
         <button className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">취소</button>
         <button type="submit" className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">
           작성

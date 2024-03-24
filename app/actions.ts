@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { createClient } from './_utils/supabase/server';
 
-export const updatePostHandler = async (postId: string, title: string, content: string) => {
+export const updatePostHandler = async (postId: string, title: string, content: string ) => {
   const supabase = createClient();
   const { data, error } = await supabase
     .from('communityPosts')
@@ -12,8 +12,7 @@ export const updatePostHandler = async (postId: string, title: string, content: 
     .select();
 
   if (data && !error) {
-    // router.push(`/community/detail/${postId}`);
     redirect(`/community/detail/${postId}`);
   }
-  // if (error) throw error;
 };
+

@@ -53,6 +53,9 @@ export default function Home() {
         <div>
           <input name="passwordCheck" type="password" required placeholder="비밀번호 확인" />
         </div>
+        {/* <div>
+          <button onClick={}>회원가입</button>
+        </div> */}
       </form>
     </div>
   );

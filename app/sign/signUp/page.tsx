@@ -1,3 +1,5 @@
+"use client"
+import supabase from "@/app/_utils/supabase/api";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 
@@ -17,7 +19,7 @@ export default function Home() {
   const [nickname,setNickname]= useState("")
 
 
-  const onSubmitSignUpHandler =(e: FormEvent<HTMLFormElement>) =>{
+  const onSubmitSignUpHandler =async(e: FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);

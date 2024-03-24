@@ -22,7 +22,7 @@ const Medical = () => {
   const startPage = (currentSet - 1) * btnRange + 1; // 시작 페이지 번호
   const endPage = Math.min(startPage + btnRange - 1, Math.ceil(totalNum / pageRange)); // 마지막 페이지 번호
 
-  if (!medicalList) {
+  if (!medicalList || medicalList.length === 0) {
     <div>데이터를 가져오지 못했습니다. 다시 시도해주세요.</div>;
   }
 
@@ -56,6 +56,7 @@ const Medical = () => {
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">
           <nav className="flex gap-5">
+            {currentSet > 1 && <button onClick={() => setPage(startPage - 1)}>&lt;</button>}
             {Array(btnRange)
               .fill(startPage)
               .map((_, i) => {
@@ -66,6 +67,11 @@ const Medical = () => {
                   </button>
                 );
               })}
+            {totalSet > currentSet && (
+              <button onClick={() => setPage(endPage + 1)} $active={false}>
+                &gt;
+              </button>
+            )}
           </nav>
         </section>
       </div>

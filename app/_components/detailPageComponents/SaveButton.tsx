@@ -87,13 +87,9 @@ const SaveButton = ({ userId, postId }: { userId: string; postId: string }) => {
   }
 
   return (
-    <div className="flex gap-3 items-center text-md p-2">
-      {/* border-2 border-gray-300  */}
-      <button
-        onClick={toggleSaveClick}
-        className=" border-2 border-gray-300 rounded-full w-[45px] h-[45px] flex items-center justify-center"
-      >
-        <Image src={storedPosts?.includes(postId) ? savedImg : unSavedImg} alt="like_img" width={25} />
+    <div className="flex gap-2 items-center text-md p-2">
+      <button onClick={toggleSaveClick} className="flex items-center justify-center">
+        <Image src={storedPosts?.includes(postId) ? savedImg : unSavedImg} alt="like_img" width={30} />
       </button>
       <p className="text-md">{saveCount}</p>
     </div>

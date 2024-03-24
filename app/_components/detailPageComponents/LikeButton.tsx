@@ -102,7 +102,6 @@ const LikeButton = ({ userId, postId }: { userId: string; postId: string }) => {
 
   return (
     <div className="flex gap-2 items-center text-md -2">
-      {/* border-2 border-gray-300 rounded p */}
       <button onClick={toggleLikeClick}>
         <Image src={likedPosts?.includes(postId) ? likedImg : nonLikedImg} alt="like_img" width={30} />
       </button>

@@ -14,7 +14,7 @@ export default function Header() {
         <Link href="/" className="hover:text-primaryColor m-3">
           로그인
         </Link>
-        <Link href="/" className="hover:text-primaryColor">
+        <Link href="/sign/signUp" className="hover:text-primaryColor">
           회원가입
         </Link>
       </div>

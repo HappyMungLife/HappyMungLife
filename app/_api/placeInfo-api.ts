@@ -7,7 +7,7 @@ const URL =
 export const fetchPharmsList = async () => {
   const { data } = await axios.get(URL);
   const placeInfos: [] = data.data;
-  const pharmsList = placeInfos.filter((placeInfo: any) => placeInfo['카테고리3'] == '동물약국'); // map 처럼 안에 () => {} 중괄호 쓰면안됨 .
+  const pharmsList = placeInfos.filter((placeInfo: any) => placeInfo['카테고리3'] == '동물약국');
   return pharmsList;
 };
 
@@ -15,7 +15,6 @@ export const fetchMedicalList = async () => {
   const { data } = await axios.get(URL);
   const placeInfos: [] = data.data;
   const medicalList = placeInfos.filter((placeInfo: any) => placeInfo['카테고리2'] == '반려의료'); // 전체 10개면 7개/ 100개면 88개는 반려의료
-
   // console.log(medicalList.length);
   return medicalList;
 };

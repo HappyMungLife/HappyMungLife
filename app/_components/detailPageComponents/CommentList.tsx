@@ -3,8 +3,6 @@
 import React from 'react';
 import CommentItem from './CommentItem';
 import CommentForm from './CommentForm';
-import { fetchCommunityComments, fetchTradeComments } from '@/app/_api/comment-api';
-import { useQuery } from '@tanstack/react-query';
 import useFetchCommunityCommentsQuery from '@/app/_hooks/useFetchCommunityCommentsQuery';
 import useFetchTradeCommentsQuery from '@/app/_hooks/useFetchTradeCommentsQuery';
 

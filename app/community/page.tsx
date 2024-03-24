@@ -28,6 +28,7 @@ const Community = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   console.log(comments);
+  console.log(items);
   const onClickLatestHandle = () => {
     setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
     setIsActive('latest');
@@ -69,9 +70,9 @@ const Community = () => {
             <li key={item.postId} className="flex border border-primaryColor rounded-2xl mb-5">
               <Link href={`community/detail/${item.postId}`} className="flex items-center p-10 w-full">
                 <figure>
-                  {item.imageUrl ? (
+                  {item.imageUrl && item.imageUrl.length > 0 ? (
                     <figcaption className="mr-10">
-                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={0} />
+                      <Image src={item.imageUrl[0]} alt={item.title} width={250} height={250} />
                     </figcaption>
                   ) : null}
                 </figure>

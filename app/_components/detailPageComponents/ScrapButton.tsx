@@ -53,8 +53,8 @@ const ScrapButton = ({ userId, postId }: { userId: string; postId: string }) => 
   }
 
   return (
-    <button onClick={toggleBookMarkClick} className="text-lg border-2 border-gray-300 rounded p-2">
-      <Image src={scrappedPosts?.includes(postId) ? bookMarkedImg : unBookMarkedImg} alt="bookmark_img" width={23} />
+    <button onClick={toggleBookMarkClick} className="text-lg mt-1 p-2">
+      <Image src={scrappedPosts?.includes(postId) ? bookMarkedImg : unBookMarkedImg} alt="bookmark_img" width={20} />
     </button>
   );
 };

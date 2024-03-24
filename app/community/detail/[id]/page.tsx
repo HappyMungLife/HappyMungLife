@@ -11,6 +11,8 @@ export const revalidate = 0; // SSR
 
 // TODO userId 여기서 받아와서 scrapbutton 등 props 로 넘겨주기!
 const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
+  // fetch();
+
   const postId = params.id;
   const supabase = createClientJs();
 
@@ -33,12 +35,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
 
   const posts = await fetchPost();
   const { title, content, imageUrl, created_at, postUser } = posts ? posts : '';
-  // * 이미지 우선 한 장으로 할 지?
-  // imageUrl : [' ..' , '.. '] - 이미지 아예 없는 경우 (빈배열) / 1장, 2장? 처리하기
   const postedDate = formatToLocaleDateTimeString(created_at);
-
-  // NOTE 이미지 하나 가져오기
-  const firstImgUrl = imageUrl ? imageUrl![0] : ''; // 이미지 없는 경우 처리해주기
 
   if (!posts) {
     return <NotFoundPage />;
@@ -61,17 +58,19 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         </div>
         <hr className="bg-gray-300/70 w-[1150px]" />
         <section className="m-20 w-full">
-          <div className="flex justify-center">
-            {imageUrl && <img src={firstImgUrl} alt="uploaded-image" className="max-w-[800px]" />}
+          <div className="flex flex-col gap-10 justify-center items-center ">
+            {imageUrl?.map((url: string) => {
+              return <img src={url} alt="uploaded-image" className="max-w-[650px]" />;
+            })}
           </div>
           <div className="my-10 flex justify-center">
-            <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
+            <p style={{whiteSpace: 'pre-line'}} className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
           </div>
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">
           {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
           <PostEditDeleteButton postId={postId} mode="community" />
-          <div className="flex gap-5">
+          <div className="flex gap-7">
             {/* 로그인 X 상태면 눌렀을 때 로그인 후 이용해주세요 뜨게하기 */}
             <LikeButton postId={postId} userId={userId} />
             <ScrapButton postId={postId} userId={userId} />

@@ -1,4 +1,5 @@
 "use client"
+import React from 'react';
 import supabase from "@/app/_utils/supabase/api";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
@@ -25,6 +26,7 @@ export default function Home() {
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+console.log(password.length)
 
   if(validation({ email, password, passwordCheck, nickname })){
     // sign up
@@ -45,17 +47,17 @@ export default function Home() {
           <input name="email" type="email" required placeholder="아이디 입력(6~20자)" />
         </div>
         <div>
-          <input name="nickname" type="text" required  placeholder="닉네임 입력" />
+          <input name="nickname" type="text" required minLength={3} placeholder="닉네임 입력" />
         </div>
         <div>
-          <input name="password"   type="password" required placeholder="비밀번호 입력" />
+          <input name="password"   type="password" required minLength={6} placeholder="비밀번호 입력" />
         </div>
         <div>
-          <input name="passwordCheck" type="password" required placeholder="비밀번호 확인" />
+          <input name="passwordCheck" type="password" required minLength={6} placeholder="비밀번호 확인" />
         </div>
-        {/* <div>
-          <button onClick={}>회원가입</button>
-        </div> */}
+        <div>
+          <button type='submit'>회원가입</button>
+        </div>
       </form>
     </div>
   );
@@ -75,20 +77,20 @@ const validation = ({email, password, passwordCheck, nickname }: userValidate) =
   }
 
 
-  if (password.length < 6) {
-    alert("비밀번호는 6자리 이상 입력해주세요.");
-    return false;
-  }
+  // if (password.length < 6) {
+  //   alert("비밀번호는 6자리 이상 입력해주세요.");
+  //   return false;
+  // }
 
-  if (nickname.length < 3) {
-    alert('닉네임은 3자리 이상 입력해주세요.');
-    return false;
-  }
+  // if (nickname.length < 3) {
+  //   alert('닉네임은 3자리 이상 입력해주세요.');
+  //   return false;
+  // }
 
-  if (password !== passwordCheck) {
-    alert("밀번호가 일치하지 않습니다.")
-    return false;
-  }
+  // if (password !== passwordCheck) {
+  //   alert("비밀번호가 일치하지 않습니다.")
+  //   return false;
+  // }
 
 
   return true;

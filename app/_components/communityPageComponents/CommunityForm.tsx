@@ -148,7 +148,7 @@ export const CommunityForm = () => {
             multiple
             accept="image/*"
             onChange={handleImageChange}
-            className="mr-auto bg-white w-auto"
+            className="mr-auto file-input file-input-bordered file-input-sm w-full max-w-xs"
           />
           <button
             className="px-4 py-2 bg-primaryColor font-semibold text-white rounded"
@@ -159,8 +159,9 @@ export const CommunityForm = () => {
           </button>
         </div>
         <h1 className="font-semibold mt-6 mb-2">이미지 미리보기</h1>
-        {isLoading && <p>이미지 업로드 중...</p>}
+
         <div className="flex flex-wrap max-h-28 h-24">
+          <h1 className="flex items-center">{isLoading && <p>이미지 업로드 중...</p>}</h1>
           {imageUrls.map((imageUrl, index) => (
             <img key={index} className="w-20 max-h-20 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}

@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={GeistSans.className}>
+    <html lang="ko" data-theme="light" className={GeistSans.className}>
       <body>
         <Header />
         <Nav />

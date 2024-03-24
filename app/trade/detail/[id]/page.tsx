@@ -66,38 +66,6 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </section>
         <CommentList postId={postId} userId={userId} mode="trade" />
-        {/* <section className="mt-20 px-10 w-full">
-          <p>댓글 10</p>
-          <hr className="bg-gray-400 w-full" />
-          <div className="mt-10 flex flex-col justify-center items-center">
-            <div className="flex flex-col gap-5">
-              <textarea className="w-[1000px] h-[100px] border-2 border-gray-300 rounded-xl"></textarea>
-              <div className="flex justify-end">
-                <button className="border-2 border-gray-300 rounded p-2 w-20">등록</button>
-              </div>
-            </div>
-            <div className="m-10">
-              <div className="flex gap-5 mt-10 justify-between items-center w-[1000px]">
-                <div className="flex items-center gap-5 px-3">
-                  <img
-                    src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/01/28/111500268.2.jpg"
-                    alt="userProfileImg"
-                    className="rounded-[50%] w-12 h-12"
-                  />
-                  <p>닉네임</p>
-                </div>
-                <p className="px-3">날짜</p>
-              </div>
-              <div className="mt-3 bg-primaryColor/30 rounded p-5 min-h-[100px]">
-                <p>내용</p>
-              </div>
-              <div className="flex justify-end gap-10 m-5">
-                <button>수정</button>
-                {/* <button>삭제</button> 
-              </div>
-            </div>
-          </div>
-        </section> */}
       </div>
     </div>
   );

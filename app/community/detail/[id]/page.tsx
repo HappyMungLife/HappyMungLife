@@ -11,6 +11,8 @@ export const revalidate = 0; // SSR
 
 // TODO userId 여기서 받아와서 scrapbutton 등 props 로 넘겨주기!
 const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
+  // fetch();
+
   const postId = params.id;
   const supabase = createClientJs();
 
@@ -56,36 +58,10 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         </div>
         <hr className="bg-gray-300/70 w-[1150px]" />
         <section className="m-20 w-full">
-          <div className="flex flex-col gap-10 justify-center">
-            {/* <section> */}
-            {/* <Swiper
-                spaceBetween={0}
-                centeredSlides={true}
-                autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: false
-                }}
-                pagination={{
-                  clickable: true
-                }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
-              > */}
-            {imageUrl?.map(
-              (url: string) => {
-                return (
-                  <img src={url} alt="uploaded-image" className="max-w-[650px]" />
-                  // <div>
-                  // <SwiperSlide>}</SwiperSlide>
-                );
-              }
-              // </div>
-            )}
-            {/* )} */}
-            {/* </Swiper> */}
-            {/* </section> */}
-            {/* <img src={firstImgUrl} alt="uploaded-image" className="max-w-[650px]" />} */}
+          <div className="flex flex-col gap-10 justify-center items-center ">
+            {imageUrl?.map((url: string) => {
+              return <img src={url} alt="uploaded-image" className="max-w-[650px]" />;
+            })}
           </div>
           <div className="my-10 flex justify-center">
             <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
@@ -94,7 +70,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         <section className="flex justify-between mt-[30px] px-20 w-full">
           {/* 해당 유저의 글이면 아래 컴포넌트 뜨도록 (수정,삭제) */}
           <PostEditDeleteButton postId={postId} mode="community" />
-          <div className="flex gap-5">
+          <div className="flex gap-7">
             {/* 로그인 X 상태면 눌렀을 때 로그인 후 이용해주세요 뜨게하기 */}
             <LikeButton postId={postId} userId={userId} />
             <ScrapButton postId={postId} userId={userId} />

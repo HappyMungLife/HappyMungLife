@@ -40,7 +40,7 @@ const Trade = () => {
   return (
     <section className="w-full px-10 pb-20">
       <div className='pt-12'>
-        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 애견용폼 거래 게시판 입니다.</h1>
+        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 애견용폼 거래 게시판</h1>
       </div>
       <div className="pt-3 flex justify-between items-center mb-10">
         <div>

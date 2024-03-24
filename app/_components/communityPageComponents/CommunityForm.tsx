@@ -101,7 +101,6 @@ export const CommunityForm = () => {
       const postId = data[0].postId;
       router.push(`/community/detail/${postId}`);
     } else {
-      // TODO : 에러 메세지가 필요한가?
       console.log('데이터가 없습니다.');
     }
 

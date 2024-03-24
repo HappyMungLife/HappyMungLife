@@ -24,7 +24,7 @@ const Community = () => {
     setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
   }, [items]);
 
-  if (loading) return <div className='py-6 flex justify-center font-semibold'>Loading...</div>;
+  if (loading) return <div className="py-6 flex justify-center font-semibold">Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   console.log(comments);
@@ -44,8 +44,11 @@ const Community = () => {
   };
 
   return (
-    <section className="w-full px-10 py-20">
-      <div className="flex justify-between items-center mb-10">
+    <section className="w-full px-10 pb-20">
+      <div className='pt-12'>
+        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 커뮤니티 게시판</h1>
+      </div>
+      <div className="pt-3 flex justify-between items-center mb-10">
         <div>
           <button
             onClick={onClickLatestHandle}

@@ -1,27 +1,24 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { updateCommunityPostHandler } from '@/app/actions';
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-type CommunityEditFormProps = {
-  postId: string;
-  prevTitle: string;
-  prevContent: string;
-  prevImageUrls: string[]
-};
-
-const supabase = createClientJs();
-
-export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrls }: CommunityEditFormProps) => {
+export const TradeForm = () => {
+  const supabase = createClientJs();
   const router = useRouter();
-  const [title, setTitle] = useState(prevTitle);
-  const [content, setContent] = useState(prevContent);
-  const [isLoading, setIsLoading] = useState(false);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('- 거래 희망 지역 : \n' + '- 가격 : \n' + '- 연락처 : 010-\n' + '- 내용 : ');
   const [imageFiles, setImageFiles] = useState<File[]>([]);
-  const [imageUrls, setImageUrls] = useState<string[]>([...prevImageUrls]);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.focus();
+    }
+  }, []);
 
   const titleHandler = (e: any) => {
     setTitle(e.target.value);
@@ -50,8 +47,8 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
     }
 
     setIsLoading(true);
-    
-    const bucket = 'community-image-bucket';
+
+    const bucket = 'trade-image-bucket';
 
     const publicImageUrls = await Promise.all(
       imageFiles.map(async (imageFile) => {
@@ -61,6 +58,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
           cacheControl: '3600',
           upsert: false
         });
+
         if (error) {
           console.error('이미지 업로드 중 오류가 발생했습니다:', error.message);
         } else {
@@ -69,7 +67,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
         return getImageUrl(bucket, fileName);
       })
     );
-    setImageUrls([...publicImageUrls]);
+    setImageUrls(publicImageUrls);
   };
 
   const getImageUrl = (bucket: string, fileName: string) => {
@@ -78,16 +76,46 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
     return data.publicUrl;
   };
 
+  const addPostHandler = async (e: any) => {
+    e.preventDefault();
+
+    if (!title.trim()) {
+      alert('제목을 입력해주세요.');
+      return;
+    }
+    if (!content.trim()) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
+    if (!imageUrls || imageUrls.length === 0) {
+      alert('이미지를 최소 1개 첨부해 주세요.');
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('tradePosts')
+      .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
+      .select('*');
+
+    if (data) {
+      const postId = data[0].postId;
+      router.push(`/trade/detail/${postId}`);
+    } else {
+      // TODO : 에러 메세지가 필요한가?
+      console.log('데이터가 없습니다.');
+    }
+
+    if (error) {
+      console.error('게시물 추가 중 오류가 발생했습니다:', error.message);
+      alert('게시물 추가 중 오류가 발생했습니다.');
+    } else {
+      alert('게시물이 등록되었습니다.');
+    }
+  };
+
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        await updateCommunityPostHandler(postId, title, content, imageUrls);
-        alert('수정이 완료되었습니다.');
-      }}
-      className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64"
-    >
-            <div className="my-10 flex">
+    <form onSubmit={addPostHandler} className="w-full lg:w-2/3 h-full lg:h-80">
+      <div className="my-10 flex">
         <label className="text-xl mr-2 w-12 font-medium">제목</label>
         <input
           ref={titleRef}
@@ -116,7 +144,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
             multiple
             accept="image/*"
             onChange={handleImageChange}
-            className="mr-auto bg-white w-auto"
+            className="mr-auto file-input file-input-bordered file-input-sm w-full max-w-xs"
           />
           <button
             className="px-4 py-2 bg-primaryColor font-semibold text-white rounded"
@@ -127,8 +155,9 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
           </button>
         </div>
         <h1 className="font-semibold mt-6 mb-2">이미지 미리보기</h1>
-        {isLoading && <p>이미지 업로드 중...</p>}
+
         <div className="flex flex-wrap max-h-28 h-24">
+          <h1 className="flex items-center">{isLoading && <p>이미지 업로드 중...</p>}</h1>
           {imageUrls.map((imageUrl, index) => (
             <img key={index} className="w-20 max-h-20 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}
@@ -144,4 +173,4 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
   );
 };
 
-export default communityEditForm;
+export default TradeForm;

@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { fetchMedicalList } from '../_api/placeInfo-api';
+import { fetchHospitalsList, fetchMedicalList } from '../_api/placeInfo-api';
+// 병원/약국 전체 정보 가져와서,
+// filter 로 지역 필터링
 
 const Medical = () => {
   const [medicalList, setMedicalList] = useState([]);
@@ -9,9 +11,9 @@ const Medical = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const medicalList = await fetchMedicalList();
+        const medicalListData = await fetchHospitalsList();
         // console.log(medicalList.length);  7
-        setMedicalList(medicalList);
+        setMedicalList(medicalListData);
       } catch (error) {
         console.error(error);
       }
@@ -29,6 +31,12 @@ const Medical = () => {
 
   const totalSet = Math.ceil(Math.ceil(totalNum / pageRange) / btnRange); // 전체 벼튼 세트 수
 
+  const handleFilterCityClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (e.currentTarget.textContent === '서울') {
+      setMedicalList(medicalList.filter((medicalItem) => medicalItem['시도 명칭'] === '서울특별시'));
+    }
+  };
+
   if (!medicalList || medicalList.length === 0) {
     <div>데이터를 가져오지 못했습니다. 다시 시도해주세요.</div>;
   }
@@ -39,7 +47,9 @@ const Medical = () => {
         <nav className="flex justify-center w-[1200px] mt-16 mb-5 rounded-lg p-2">
           <ul className="flex gap-10 items-center justify-center px-1">
             <li>전체</li>
-            <li>서울</li>
+            <li>
+              <button onClick={(e) => handleFilterCityClick}>서울</button>
+            </li>
           </ul>
         </nav>
         <hr className="bg-gray-300/70 w-[1150px]" />

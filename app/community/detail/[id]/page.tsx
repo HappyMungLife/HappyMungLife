@@ -11,8 +11,6 @@ export const revalidate = 0; // SSR
 
 // TODO userId 여기서 받아와서 scrapbutton 등 props 로 넘겨주기!
 const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
-  // fetch();
-
   const postId = params.id;
   const supabase = createClientJs();
 

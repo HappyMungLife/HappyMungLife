@@ -98,9 +98,7 @@ export const CommunityForm = () => {
       .from('communityPosts')
       .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
       .select('*');
-
-    console.log(data);
-
+      
     if (data) {
       const postId = data[0].postId;
       router.push(`/community/detail/${postId}`);

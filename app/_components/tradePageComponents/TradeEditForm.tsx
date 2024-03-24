@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { updateCommunityPostHandler } from '@/app/actions';
+import { updateTradePostHandler } from '@/app/actions';
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 
 type CommunityEditFormProps = {
@@ -13,7 +13,7 @@ type CommunityEditFormProps = {
 
 const supabase = createClientJs();
 
-export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
+export const TradeEditForm = ({ postId, prevTitle, prevContent }: CommunityEditFormProps) => {
   const router = useRouter();
   const [title, setTitle] = useState(prevTitle);
   const [content, setContent] = useState(prevContent);
@@ -50,7 +50,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityE
 
     setIsLoading(true);
     
-    const bucket = 'community-image-bucket';
+    const bucket = 'trade-image-bucket';
 
     const publicImageUrls = await Promise.all(
       imageFiles.map(async (imageFile) => {
@@ -81,7 +81,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityE
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        await updateCommunityPostHandler(postId, title, content, imageUrls);
+        await updateTradePostHandler(postId, title, content, imageUrls);
         alert('수정이 완료되었습니다.');
       }}
       className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64"
@@ -143,4 +143,4 @@ export const communityEditForm = ({ postId, prevTitle, prevContent }: CommunityE
   );
 };
 
-export default communityEditForm;
+export default TradeEditForm;

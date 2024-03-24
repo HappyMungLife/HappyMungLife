@@ -33,6 +33,7 @@ const CommentItem = ({ comment, userId, mode }: { comment: CommentType; userId: 
       : useUpdateTradeCommentMutation(commentId, editedContent);
 
   const handleSetEditClick = async () => {
+    setEditedContent(content);
     setEditing(true);
   };
 

@@ -70,12 +70,10 @@ const SaveButton = ({ userId, postId }: { userId: string; postId: string }) => {
   const toggleSaveClick = async () => {
     if (!storedPosts?.includes(postId)) {
       await addPostMutate();
-      // await increaseSaveCount(postId);
       await increaseSaveMutate();
     } else {
       await removePostMutate();
       await decreaseSaveMutate();
-      // await decreaseSaveCount(postId);
     }
   };
 
@@ -89,11 +87,11 @@ const SaveButton = ({ userId, postId }: { userId: string; postId: string }) => {
   }
 
   return (
-    <div className="flex gap-3 items-center text-md border-2 border-gray-300 rounded p-2">
-      <button onClick={toggleSaveClick}>
-        <Image src={storedPosts?.includes(postId) ? savedImg : unSavedImg} alt="like_img" width={25} />
+    <div className="flex gap-2 items-center text-md p-2">
+      <button onClick={toggleSaveClick} className="flex items-center justify-center">
+        <Image src={storedPosts?.includes(postId) ? savedImg : unSavedImg} alt="like_img" width={30} />
       </button>
-      <p>{saveCount}</p>
+      <p className="text-md">{saveCount}</p>
     </div>
   );
 };

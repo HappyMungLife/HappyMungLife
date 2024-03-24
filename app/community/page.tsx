@@ -24,7 +24,7 @@ const Community = () => {
     setSortedItems([...items].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
   }, [items]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className='py-6 flex justify-center font-semibold'>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   console.log(comments);

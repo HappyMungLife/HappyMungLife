@@ -103,6 +103,7 @@ Communication
     <th>Next.js</th>
     <th>Prettier</th>
     <th>Tailwind</th>
+    <th>DaisyUI</th>
   </tr>
   <tr>
     <td width="100" height="100">
@@ -119,6 +120,12 @@ Communication
       <div style="display: flex; align-items: center;">
         &nbsp;
         <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/c5cc1636-4a0e-4456-b369-1e15a8840363" alt="icon" width="60" height="60" />
+      </div>     
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        &nbsp;
+        <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/a26efc15-198f-44f2-a337-13323e049ac2" alt="icon" width="60" height="60" />
       </div>     
     </td>
   </tr>
@@ -338,7 +345,7 @@ Communication
 ## 기능 소개
 |서혜련|박서영|박재민|안주원|
 |:----:|:----:|:----:|:----:|
-|**Features**<br><br>커뮤니티 상세페이지 랜더링<br>중고거래 상세페이지 랜더링<br>상세페이지 안에 보이는 댓글기능 CRUD구현|<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티 리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|**Features**<br>로그인,로그아웃 기능구현|
+|**Features**<br><br>커뮤니티 상세페이지 랜더링<br>중고거래 상세페이지 랜더링<br>상세페이지 안에 보이는 댓글기능 CRUD구현|<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티<br>리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|**Features**<br>로그인,로그아웃 기능구현|
 
 
 <br>

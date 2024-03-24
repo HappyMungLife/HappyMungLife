@@ -8,19 +8,26 @@ const Medical = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const medicalList = await fetchMedicalList();
-      setMedicalList(medicalList);
+      try {
+        const medicalList = await fetchMedicalList();
+        // console.log(medicalList.length);  7
+        setMedicalList(medicalList);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, []);
 
   const [page, setPage] = useState<number>(1); // 현재 페이지 수
-  const totalNum = medicalList.length; // 총 게시물 수
+  const totalNum = medicalList.length; // 총 데이터 수
   const pageRange = 2; // 페이지당 보여줄 게시물 수 -   바꾸기
-  const btnRange = 7; // 보여질 페이지 버튼의 개수
+  const btnRange = 3; // 보여질 페이지 버튼의 개수
   const currentSet = Math.ceil(page / btnRange); // 현재 페이지 세트
   const startPage = (currentSet - 1) * btnRange + 1; // 시작 페이지 번호
   const endPage = Math.min(startPage + btnRange - 1, Math.ceil(totalNum / pageRange)); // 마지막 페이지 번호
+
+  const totalSet = Math.ceil(Math.ceil(totalNum / pageRange) / btnRange); // 전체 벼튼 세트 수
 
   if (!medicalList || medicalList.length === 0) {
     <div>데이터를 가져오지 못했습니다. 다시 시도해주세요.</div>;
@@ -67,11 +74,7 @@ const Medical = () => {
                   </button>
                 );
               })}
-            {totalSet > currentSet && (
-              <button onClick={() => setPage(endPage + 1)} $active={false}>
-                &gt;
-              </button>
-            )}
+            {totalSet > currentSet && <button onClick={() => setPage(endPage + 1)}>&gt;</button>}
           </nav>
         </section>
       </div>

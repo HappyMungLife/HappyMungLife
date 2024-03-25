@@ -1,4 +1,4 @@
-# 팀 프로젝트 해피멍생
+# 🐶 팀 프로젝트 해피멍생 🐾
 
 ## <목차>
 #프로젝트 팀명
@@ -42,9 +42,9 @@
 <br>
 
 
-## 프로젝트 "해피멍생"
+## 🐶 프로젝트 "해피멍생" 🐾
 
-배포 도메인 : [배포 링크 이동하기]()
+배포 도메인 : [배포 링크 이동하기](https://happy-dogs-mung-life.vercel.app/)
 
 프로젝트 명 : 해피멍생
 
@@ -63,7 +63,7 @@
 
 
 
-## Tools
+## 🐾 Tools
 Communication
 
 <table>
@@ -97,10 +97,11 @@ Communication
 
 
 
-## 개발환경
+## 🐾 개발환경
 <table>
   <tr>
     <th>Next.js</th>
+    <th>Supabase</th>
     <th>Prettier</th>
     <th>Tailwind</th>
     <th>DaisyUI</th>
@@ -110,6 +111,11 @@ Communication
       <div style="display: flex; align-items:center; justify-content:center;">
          &nbsp;&nbsp;&nbsp;<img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/ca3b35d4-25bf-4038-9a33-2daf9e6c5ade" alt="icon" width="50" height="50" style="text-align:center" />
       </div>
+    </td>
+     <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        <img src="" alt="icon" width="65" height="65" />
+      </div>     
     </td>
     <td width="100" height="100">
       <div style="display: flex; align-items: center;">
@@ -135,7 +141,7 @@ Communication
 <br>
 <br>
 
-## Code Convention
+## 🐾 Code Convention
 <table>
     <tr>
        <th>기본 패키지 관리자</th>
@@ -153,14 +159,14 @@ Communication
       </div>
     </td>
     </tr>
-   <tr>
+<!--    <tr>
      <th>전역 상태 관리 라이브러리</th>
      <td width="300" height="30">
       <div style="display: flex; align-items:center; justify-content:center;">
         Zustand
       </div>
     </td>
-   </tr>
+   </tr> -->
    <tr>
       <th>비동기 로직 라이브러리</th>
      <td width="300" height="30">
@@ -169,11 +175,11 @@ Communication
       </div>
     </td>
    </tr>
-   <tr>
+  <tr>
       <th>CSS</th>
           <td width="300" height="30">
       <div style="display: flex; align-items:center; justify-content:center;">
-        Tailwind CSS 기반 디자인 시스템
+        Tailwind CSS, 디자인 시스템 Daisy UI
       </div>
     </td>
    </tr>
@@ -186,13 +192,11 @@ Communication
     </td>
     </tr>
 </table>
-
-
 <br>
 <br>
 <br>
 
-### 깃허브 커밋 규칙
+### 🐾 깃허브 커밋 규칙
 
 <table>
     <tr>
@@ -309,6 +313,22 @@ Communication
         </div>
       </td>
     </tr>
+      <tr>
+       <th width="200">식당/카페 정보 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="식당카페페이지">
+        </div>
+      </td>
+    </tr>
+      <tr>
+       <th width="200">병원/약국 정보 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="병원약국페이지">
+        </div>
+      </td>
+    </tr>
     <tr>
        <th width="200">로그인 페이지</th>
        <td width="400" height="30">
@@ -335,7 +355,7 @@ Communication
 
 |서혜련|박서영|박재민|안주원|
 |:----:|:----:|:----:|:----:|
-|커뮤니티 상세페이지<br>중고거래 상세페이지<br>|메인페이지<br>커뮤니티 리스트 페이지<br>중고거래 리스트 페이지<br>|커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|로그인,로그아웃 페이지<br>|
+|커뮤니티 상세페이지<br>중고거래 상세페이지<br>식당/카페 정보 페이지<br>병원/약국 정보 페이지<br>|메인페이지<br>커뮤니티 리스트 페이지<br>중고거래 리스트 페이지<br>|커뮤니티 작성 페이지<br>커뮤니티 수정 페이지<br>중고거래 작성 페이지<br>중고거래 수정 페이지<br>|로그인,로그아웃 페이지<br>|
 
 
 <br>
@@ -345,7 +365,7 @@ Communication
 ## 기능 소개
 |서혜련|박서영|박재민|안주원|
 |:----:|:----:|:----:|:----:|
-|**Features**<br><br>커뮤니티 상세페이지 랜더링<br>중고거래 상세페이지 랜더링<br>상세페이지 안에 보이는 댓글기능 CRUD구현|<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티<br>리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|**Features**<br>로그인,로그아웃 기능구현|
+|**Features**<br><br>커뮤니티 상세페이지<br>중고거래 상세페이지<br>상세페이지 댓글 기능 CRUD구현<br>상세페이지 좋아요/찜/스크랩 기능<br>식당/카페/병원/약국 장소정보 페이지<br> |<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티<br>리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>커뮤니티 수정 페이지<br>중고거래 작성 페이지<br>중고거래 수정 페이지<br>이미지 업로드 및 수정<br>|**Features**<br>로그인,로그아웃 기능구현|
 
 
 <br>

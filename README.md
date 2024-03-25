@@ -27,7 +27,7 @@
 - 완성 프로젝트 페이지별 화면 구성 & 기능
   1. 메인 페이지
   2. 커뮤니티, 중고거래 리스트 페이지
-  3. 커뮤니티, 중고거래 게시글 작성 페이지
+  3. 커뮤니티, 중고거래 게시글 작성 및 수정 페이지
   4. 커뮤니티, 중고거래 게시글 상세 페이지
   5. 식당/카페, 병원/약국 장소 정보 페이지
   6. 로그인/회원가입 페이지
@@ -37,7 +37,7 @@
 <br>
 <br>
 
-## 팀 소개
+## 🐶 팀 소개
 
 <span style="font-size:150%;">팀 명: 혁우님과 함께하면 참 10조</span>
 
@@ -362,6 +362,11 @@ Communication
   </tr>
 </table>
 
+- 전체 레이아웃에 적용된 헤더와 메뉴는 스크롤을 내려도 고정되도록 했습니다. 
+- 메인 슬라이더로 배너 이미지를 자동/수동으로 넘길 수 있습니다.
+- 커뮤니티, 중고거래 게시판의 좋아요/찜 수를 기준으로, 인기 게시글 순위 3위까지 뜨도록 했으며 각 게시글의 작성자 정보나 글 내용을 미리 볼 수 있습니다.
+- 각 게시글의 좋아요/찜 수 및 댓글 수를 확인할 수 있습니다.
+
 <br>
 <br>
 
@@ -371,25 +376,38 @@ Communication
   </tr>
   <tr>
  <td style="display: flex; justify-content:center; align-items:center;">
-   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_list_page.png" width="450"/>
-  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_list_page.png" width="450"/> 
+   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_list_page.png" width="470" height="570"/>
+  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_list_page.png" width="470" height="570"/> 
  </td>
   </tr>
 </table>
+
+  - 최신순, 인기순으로 정렬할 수 있도록 했습니다.
+    
+  - 각 게시글의 글 내용, 유저 정보, 좋아요 수 등과 함꼐 이미지도 조회 가능합니다.
+
 
 <br>
 <br>
 
 <table>
 <tr>
-  <th>3. 커뮤니티, 중고거래 게시글 작성 페이지</th>
+  <th>3. 커뮤니티, 중고거래 게시글 작성 및 수정 페이지</th>
   </tr>
   <tr>
 <td style="display: flex; justify-content:center; align-items:center;">
-  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/post_page.png" width="450"/>
- <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/edit_page.png" width="450"/> </td>
+  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/post_page.png" width="470" height="430"/>
+ <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/edit_page.png" width="470" height="430"/> </td>
   </tr>
 </table>
+
+ - 제목과 내용을 입력할 수 있도록 했으며 유효성 검사를 통해 입력된 내용이 없을 경우 alert 창과 함께 글이 등록되지않도록 했습니다.
+ - 파일 선택으로 이미지는 총 3장까지 업로드 가능하도록 설정했습니다.
+ - 이미지를 업로드할 시, 미리보기가 가능합니다.
+
+ - 중고거래 작성 페이지에서는 '거래 가능 지역', '가격' 등을 기본 양식으로 뜨게 했습니다.
+   
+ - 수정 페이지에서는 원래의 게시글 내용과 이미지를 불러와 수정할 수 있도록 했습니다.
 
 <br>
 <br>
@@ -400,11 +418,24 @@ Communication
   </tr>
   <tr>
  <td style="display: flex; justify-content:center; align-items:center;">
-   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_detail_page.png" width="450"/> 
-<img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_detail_page.png" width="450"/> </td>
+   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_detail_page.png" width="450" height="680"/> 
+<img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_detail_page.png" width="450" height="680"/> </td>
   </tr>
 </table>
 
+- 페이지 컴포넌트는 SSR 방식으로 렌더링되도록 했습니다.
+
+- 글쓴 유저의 닉네임, 프로필이미지, 작성 시간과 함께 제목, 내용을 조회 가능합니다.
+- 업로드한 이미지가 없는 경우 글만 뜨도록 했으며, 업로드한 이미지가 여러 장인 경우 세로 한 줄로 뜨게 했습니다.
+- 수정 버튼으로 수정페이지로 이동, 삭제 버튼으로 alert 창을 통한 확인과 함께 해당 글이 삭제되도록 했습니다.
+- 
+- 좋아요 / 찜 기능을 통해 각 게시글이 얼마나 많은 좋아요와 찜을 받았는지 확인 가능합니다.
+- 스크랩 기능을 통해 해당 게시글을 유저의 스크랩 목록에 넣을 수 있습니다.
+- 내가 누른 좋아요, 찜, 스크랩 내역은 저장되어 색칠된 아이콘 이미지로 확인 가능 합니다.
+
+- 댓글 수를 확인 가능하며, 댓글을 등록/수정/삭제 할 수 있도록 했습니다.
+- 댓글은 상위부터 최신순으로 뜨도록 했습니다.
+  
 <br>
 <br>
 
@@ -416,6 +447,10 @@ Communication
  <td><img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/place_info_page.png" width="500"/> </td>
   </tr>
 </table>
+
+- 공공데이터 open api를 활용해 많은 양의 반려견 동반 가능한 식당/카페 장소와 동물병원/약국 정보 데이터를 가져와 렌더링했습니다.
+- 전체, 서울 등의 지역을 선택하면 해당 지역별로 분류된 데이터가 뜹니다.
+- 페이지네이션을 적용했습니다.
 
 <br>
 <br>
@@ -429,6 +464,12 @@ Communication
   </tr>
 </table>
 
+- Supabase auth를 통해 이메일, 닉네임, 비밀번호를 받아 회원가입되도록 했습니다.
+- 유효성 검사를 통해 유효한 이메일 주소, 3자리 이상의 닉네임, 6자리 이상의 비밀번호가 입력되어야 회원가입할 수 있도록 했습니다.
+- 회원가입을 하면 Supabase 의 users 테이블에 유저 정보가 등록되도록 했습니다.
+  
+- 회원가입 된 이메일 아이디, 비밀번호와 일치할 때 로그인되도록 했습니다.
+
 <br>
 <br>
 <br>
@@ -438,100 +479,102 @@ Communication
 
 <br>
 
+```
 📦app
-┣ 📂auth
-┃ ┗ 📂callback
-┃ ┃ ┗ 📜route.ts
-┣ 📂community
-┃ ┣ 📂detail
-┃ ┃ ┗ 📂[id]
-┃ ┃ ┃ ┣ 📂edit
-┃ ┃ ┃ ┃ ┗ 📜page.tsx
-┃ ┃ ┃ ┗ 📜page.tsx
-┃ ┣ 📂post
-┃ ┃ ┗ 📜page.tsx
-┃ ┗ 📜page.tsx
-┣ 📂meal
-┃ ┗ 📜page.tsx
-┣ 📂medical
-┃ ┗ 📜page.tsx
-┣ 📂mypage
-┃ ┗ 📜page.tsx
-┣ 📂protected
-┃ ┗ 📜page.tsx
-┣ 📂sign
-┃ ┣ 📂signIn
-┃ ┃ ┣ 📜page.tsx
-┃ ┃ ┗ 📜submit-button.tsx
-┃ ┗ 📂signUp
-┃ ┃ ┗ 📜page.tsx
-┣ 📂trade
-┃ ┣ 📂detail
-┃ ┃ ┗ 📂[id]
-┃ ┃ ┃ ┣ 📂edit
-┃ ┃ ┃ ┃ ┗ 📜page.tsx
-┃ ┃ ┃ ┗ 📜page.tsx
-┃ ┣ 📂post
-┃ ┃ ┗ 📜page.tsx
-┃ ┗ 📜page.tsx
-┣ 📂_api
-┃ ┣ 📜comment-api.ts
-┃ ┣ 📜detailPage-api.ts
-┃ ┗ 📜placeInfo-api.ts
-┣ 📂_components
-┃ ┣ 📂communityPageComponents
-┃ ┃ ┣ 📜CommumityData.tsx
-┃ ┃ ┣ 📜CommunityCommentsData.tsx
-┃ ┃ ┣ 📜CommunityEditForm.tsx
-┃ ┃ ┗ 📜CommunityForm.tsx
-┃ ┣ 📂detailPageComponents
-┃ ┃ ┣ 📜CommentDeleteButton.tsx
-┃ ┃ ┣ 📜CommentForm.tsx
-┃ ┃ ┣ 📜CommentItem.tsx
-┃ ┃ ┣ 📜CommentList.tsx
-┃ ┃ ┣ 📜LikeButton.tsx
-┃ ┃ ┣ 📜PostEditDeleteButton.tsx
-┃ ┃ ┣ 📜SaveButton.tsx
-┃ ┃ ┗ 📜ScrapButton.tsx
-┃ ┣ 📂layout
-┃ ┃ ┣ 📜Footer.tsx
-┃ ┃ ┣ 📜Header.tsx
-┃ ┃ ┗ 📜Nav.tsx
-┃ ┣ 📂mainPageComponents
-┃ ┃ ┗ 📜test.tsx
-┃ ┗ 📂tradePageComponents
-┃ ┃ ┣ 📜TradeCommentData.tsx
-┃ ┃ ┣ 📜TradeData.tsx
-┃ ┃ ┣ 📜TradeEditForm.tsx
-┃ ┃ ┗ 📜TradeForm.tsx
-┣ 📂_hooks
-┃ ┣ 📜useAddCommunityCommentMutation.ts
-┃ ┣ 📜useAddTradeCommentMutation.ts
-┃ ┣ 📜useDeleteCommunityCommentMutation.ts
-┃ ┣ 📜useDeleteTradeCommentMutation.ts
-┃ ┣ 📜useFetchCommunityCommentsQuery.ts
-┃ ┣ 📜useFetchTradeCommentsQuery.ts
-┃ ┣ 📜useUpdateCommunityCommentMutation.ts
-┃ ┗ 📜useUpdateTradeCommentMutation.ts
-┣ 📂_style
-┃ ┗ 📜mainSwiper.css
-┣ 📂_types
-┃ ┣ 📜communityPosts.types.ts
-┃ ┗ 📜mainPage.type.ts
-┣ 📂_utils
-┃ ┣ 📂supabase
-┃ ┃ ┣ 📜api.ts
-┃ ┃ ┣ 📜auth.ts
-┃ ┃ ┣ 📜client.ts
-┃ ┃ ┣ 📜clientJs.ts
-┃ ┃ ┣ 📜createClientJs.ts
-┃ ┃ ┣ 📜middleware.ts
-┃ ┃ ┗ 📜server.ts
-┃ ┗ 📜date.ts
-┣ 📜actions.ts
-┣ 📜favicon.ico
-┣ 📜globals.css
-┣ 📜layout.tsx
-┣ 📜not-found.tsx
-┣ 📜page.tsx
-┗ 📜provider.tsx
+ ┣ 📂auth
+ ┃ ┗ 📂callback
+ ┃ ┃ ┗ 📜route.ts
+ ┣ 📂community
+ ┃ ┣ 📂detail
+ ┃ ┃ ┗ 📂[id]
+ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┣ 📂post
+ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┗ 📜page.tsx
+ ┣ 📂meal
+ ┃ ┗ 📜page.tsx
+ ┣ 📂medical
+ ┃ ┗ 📜page.tsx
+ ┣ 📂mypage
+ ┃ ┗ 📜page.tsx
+ ┣ 📂protected
+ ┃ ┗ 📜page.tsx
+ ┣ 📂sign
+ ┃ ┣ 📂signIn
+ ┃ ┃ ┣ 📜page.tsx
+ ┃ ┃ ┗ 📜submit-button.tsx
+ ┃ ┗ 📂signUp
+ ┃ ┃ ┗ 📜page.tsx
+ ┣ 📂trade
+ ┃ ┣ 📂detail
+ ┃ ┃ ┗ 📂[id]
+ ┃ ┃ ┃ ┣ 📂edit
+ ┃ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┣ 📂post
+ ┃ ┃ ┗ 📜page.tsx
+ ┃ ┗ 📜page.tsx
+ ┣ 📂_api
+ ┃ ┣ 📜comment-api.ts
+ ┃ ┣ 📜detailPage-api.ts
+ ┃ ┗ 📜placeInfo-api.ts
+ ┣ 📂_components
+ ┃ ┣ 📂communityPageComponents
+ ┃ ┃ ┣ 📜CommumityData.tsx
+ ┃ ┃ ┣ 📜CommunityCommentsData.tsx
+ ┃ ┃ ┣ 📜CommunityEditForm.tsx
+ ┃ ┃ ┗ 📜CommunityForm.tsx
+ ┃ ┣ 📂detailPageComponents
+ ┃ ┃ ┣ 📜CommentDeleteButton.tsx
+ ┃ ┃ ┣ 📜CommentForm.tsx
+ ┃ ┃ ┣ 📜CommentItem.tsx
+ ┃ ┃ ┣ 📜CommentList.tsx
+ ┃ ┃ ┣ 📜LikeButton.tsx
+ ┃ ┃ ┣ 📜PostEditDeleteButton.tsx
+ ┃ ┃ ┣ 📜SaveButton.tsx
+ ┃ ┃ ┗ 📜ScrapButton.tsx
+ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📜Footer.tsx
+ ┃ ┃ ┣ 📜Header.tsx
+ ┃ ┃ ┗ 📜Nav.tsx
+ ┃ ┣ 📂mainPageComponents
+ ┃ ┃ ┗ 📜test.tsx
+ ┃ ┗ 📂tradePageComponents
+ ┃ ┃ ┣ 📜TradeCommentData.tsx
+ ┃ ┃ ┣ 📜TradeData.tsx
+ ┃ ┃ ┣ 📜TradeEditForm.tsx
+ ┃ ┃ ┗ 📜TradeForm.tsx
+ ┣ 📂_hooks
+ ┃ ┣ 📜useAddCommunityCommentMutation.ts
+ ┃ ┣ 📜useAddTradeCommentMutation.ts
+ ┃ ┣ 📜useDeleteCommunityCommentMutation.ts
+ ┃ ┣ 📜useDeleteTradeCommentMutation.ts
+ ┃ ┣ 📜useFetchCommunityCommentsQuery.ts
+ ┃ ┣ 📜useFetchTradeCommentsQuery.ts
+ ┃ ┣ 📜useUpdateCommunityCommentMutation.ts
+ ┃ ┗ 📜useUpdateTradeCommentMutation.ts
+ ┣ 📂_style
+ ┃ ┗ 📜mainSwiper.css
+ ┣ 📂_types
+ ┃ ┣ 📜communityPosts.types.ts
+ ┃ ┗ 📜mainPage.type.ts
+ ┣ 📂_utils
+ ┃ ┣ 📂supabase
+ ┃ ┃ ┣ 📜api.ts
+ ┃ ┃ ┣ 📜auth.ts
+ ┃ ┃ ┣ 📜client.ts
+ ┃ ┃ ┣ 📜clientJs.ts
+ ┃ ┃ ┣ 📜createClientJs.ts
+ ┃ ┃ ┣ 📜middleware.ts
+ ┃ ┃ ┗ 📜server.ts
+ ┃ ┗ 📜date.ts
+ ┣ 📜actions.ts
+ ┣ 📜favicon.ico
+ ┣ 📜globals.css
+ ┣ 📜layout.tsx
+ ┣ 📜not-found.tsx
+ ┣ 📜page.tsx
+ ┗ 📜provider.tsx
+ ```

@@ -94,7 +94,7 @@ export const CommunityForm = () => {
 
     const { data, error } = await supabase
       .from('communityPosts')
-      .insert([{ title, content, imageUrl: imageUrls, userId: 'tenth@n.com' }])
+      .insert([{ title, content, imageUrl: imageUrls, userId: 'riri@r.com' }])
       .select('*');
 
     if (data) {

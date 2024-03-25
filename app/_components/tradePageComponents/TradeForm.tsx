@@ -94,7 +94,7 @@ export const TradeForm = () => {
 
     const { data, error } = await supabase
       .from('tradePosts')
-      .insert([{ title, content, imageUrl: imageUrls, userId: 'ahddl622@naver.com' }])
+      .insert([{ title, content, imageUrl: imageUrls, userId: 'riri@r.com' }])
       .select('*');
 
     if (data) {

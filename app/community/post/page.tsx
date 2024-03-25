@@ -3,7 +3,7 @@ import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 
 export const revalidate = 0;
 
-export const CommunityPostPage = () => {
+const CommunityPostPage = () => {
   const supabase = createClientJs();
 
   return (

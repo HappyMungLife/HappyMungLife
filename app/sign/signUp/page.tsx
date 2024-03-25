@@ -3,6 +3,7 @@ import React from 'react';
 import supabase from '@/app/_utils/supabase/api';
 import Image from 'next/image';
 import { FormEvent, useState } from 'react';
+import { redirect, useRouter } from 'next/navigation';
 
 export interface userValidate {
   email: string;
@@ -12,10 +13,7 @@ export interface userValidate {
 }
 
 export default function Home() {
-  // const [password,setPassword]= useState("")
   const [passwordCheck, setPasswordCheck] = useState('');
-  // const [email,setEmail]= useState("")
-  // const [nickname,setNickname]= useState("")
 
   const onSubmitSignUpHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,25 +72,27 @@ export default function Home() {
 const validation = ({ email, password, passwordCheck, nickname }: userValidate) => {
   const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/;
 
-  if (!email.match(validRegex)) {
-    alert('이메일 형식이 올바르지 않습니다.');
-    return false;
-  }
+  // if (!email.match(validRegex)) {
+  //   alert('이메일 형식이 올바르지 않습니다.');
+  //   return false;
+  // }
 
-  if (password.length < 6) {
-    alert('비밀번호는 6자리 이상 입력해주세요.');
-    return false;
-  }
+  // if (password.length < 6) {
+  //   alert('비밀번호는 6자리 이상 입력해주세요.');
+  //   return false;
+  // }
 
-  if (nickname.length < 3) {
-    alert('닉네임은 3자리 이상 입력해주세요.');
-    return false;
-  }
+  // if (nickname.length < 3) {
+  //   alert('닉네임은 3자리 이상 입력해주세요.');
+  //   return false;
+  // }
 
-  if (password !== passwordCheck) {
-    alert('비밀번호가 일치하지 않습니다.');
-    return false;
-  }
+  // if (password !== passwordCheck) {
+  //   alert('비밀번호가 일치하지 않습니다.');
+  //   return false;
+  // }
 
+  // 유효성검사 form에서 이미 진행
+  alert('회원가입 되었습니다!'); // redircet 안됨
   return true;
 };

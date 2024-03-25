@@ -34,11 +34,11 @@ const PostEditDeleteButton = ({ postId, mode }: { postId: string; mode?: string 
   };
 
   return (
-    <div className="flex gap-5">
-      <button className=" border-2 border-gray-300 rounded p-2" onClick={handleEditClick}>
+    <div className="flex gap-5 ml-[470px]">
+      <button className="bg-primaryColor font-semibold text-white rounded p-2 w-20" onClick={handleEditClick}>
         수정
       </button>
-      <button className=" border-2 border-gray-300 rounded p-2" onClick={handleDeleteClick}>
+      <button className="bg-red-400/60 font-semibold text-white rounded p-2 w-20" onClick={handleDeleteClick}>
         삭제
       </button>
     </div>

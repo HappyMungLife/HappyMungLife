@@ -30,8 +30,6 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
   const { title, content, imageUrl, created_at, postUser } = posts ? posts : '';
   const postedDate = formatToLocaleDateTimeString(created_at);
 
-  const firstImgUrl = imageUrl ? imageUrl![0] : '';
-
   if (!posts) {
     return <NotFoundPage />;
   }
@@ -52,8 +50,10 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
         </div>
         <hr className="bg-gray-300/70 w-[1150px]" />
         <section className="m-20 w-full">
-          <div className="flex justify-center">
-            {imageUrl && <img src={firstImgUrl} alt="uploaded-image" width={400} />}
+          <div className="flex flex-col gap-10 justify-center items-center ">
+            {imageUrl?.map((url: string) => {
+              return <img src={url} alt="uploaded-image" className="max-w-[650px]" />;
+            })}
           </div>
           <div className="my-10 flex justify-center">
             <p style={{whiteSpace: 'pre-line'}} className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
@@ -61,7 +61,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">
           <PostEditDeleteButton postId={postId} />
-          <div className="flex gap-5">
+          <div className="flex">
             <SaveButton userId={userId} postId={postId} />
           </div>
         </section>

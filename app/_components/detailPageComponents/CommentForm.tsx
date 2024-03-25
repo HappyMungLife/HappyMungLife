@@ -31,11 +31,11 @@ const CommentForm = ({ userId, postId, mode }: { userId: string; postId: string;
         placeholder="댓글을 입력해주세요 (최대 200자)"
         value={content}
         onChange={handleCommentChange}
-        className="w-[1000px] h-[100px] border-2 border-gray-300 rounded-3xl p-5 resize-none"
+        className="w-[1000px] h-[100px] border-2 border-gray-300 rounded-3xl p-5 resize-none focus:outline-none focus:ring-1 focus:ring-gray-300"
         maxLength={200}
       />
       <div className="flex justify-end">
-        <button type="submit" className="border-2 border-gray-300 rounded p-2 w-20">
+        <button type="submit" className="bg-primaryColor font-semibold text-white rounded p-2 w-20">
           등록
         </button>
       </div>

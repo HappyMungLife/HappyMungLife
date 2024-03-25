@@ -68,31 +68,40 @@ const CommentItem = ({ comment, userId, mode }: { comment: CommentType; userId: 
       {editing ? (
         <>
           <form onSubmit={handleEditedCommentSubmit}>
-            <div className="mt-2 bg-primaryColor/30 rounded-3xl p-5 w-[1000px] min-h-[100px]">
+            <div className="mt-2 bg-gray-300/30 rounded-3xl p-3 w-[1000px] min-h-[100px] flex  justify-center">
               <textarea
                 value={editedContent}
                 onChange={(e) => {
                   handleEditedContentChange(e);
                 }}
                 maxLength={200}
-                className="resize-none rounded-3xl p-3 w-[960px] min-h-[100px]"
+                className="resize-none rounded-3xl p-3 w-[960px] min-h-[100px] focus:outline-none focus:ring-1 focus:ring-gray-300"
               >
                 {content}
               </textarea>
             </div>
             <div className="flex justify-end gap-10 m-5">
-              <button onClick={handleCancelEditClick}>취소</button>
-              <button type="submit">등록</button>
+              <button
+                onClick={handleCancelEditClick}
+                className="bg-red-400/60 font-semibold text-white rounded p-2 w-20"
+              >
+                취소
+              </button>
+              <button type="submit" className="bg-primaryColor font-semibold text-white rounded p-2 w-20">
+                등록
+              </button>
             </div>
           </form>
         </>
       ) : (
         <>
-          <div className="mt-2 bg-primaryColor/30 rounded-3xl p-5 w-[1000px] min-h-[100px]">
+          <div className="mt-2 bg-gray-300/20 rounded-3xl p-5 w-[1000px] min-h-[100px]">
             <p>{content}</p>
           </div>
           <div className="flex justify-end gap-10 m-5">
-            <button onClick={handleSetEditClick}>수정</button>
+            <button onClick={handleSetEditClick} className="bg-primaryColor font-semibold text-white rounded p-2 w-20">
+              수정
+            </button>
             <CommentDeleteButton commentId={commentId} mode={mode} />
           </div>
         </>

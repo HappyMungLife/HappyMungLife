@@ -11,8 +11,6 @@ export const revalidate = 0; // SSR
 
 // TODO userId 여기서 받아와서 scrapbutton 등 props 로 넘겨주기!
 const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
-  // fetch();
-
   const postId = params.id;
   const supabase = createClientJs();
 
@@ -31,7 +29,7 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
     }
   };
 
-  const userId = 'gpfus'; // 임시 설정 테스트
+  const userId = 'tenth@n.com'; // 임시 설정 테스트
 
   const posts = await fetchPost();
   const { title, content, imageUrl, created_at, postUser } = posts ? posts : '';
@@ -51,7 +49,6 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
             <p className="text-sm">{postedDate}</p>
           </div>
           <div className="flex justify-start items-center gap-5 ml-5 w-[200px]">
-            {/* 유저 프로필에서 업로드 한 이미지 가져올 예정  / 기본이미지 : 개 발자국*/}
             <img src={postUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-12 h-12" />
             <p>{postUser.nickname}</p>
           </div>
@@ -60,14 +57,11 @@ const CommunityDetailPage = async ({ params }: { params: { id: string } }) => {
         <section className="m-20 w-full">
           <div className="flex flex-col gap-10 justify-center items-center ">
             {imageUrl?.map((url: string) => {
-              return <img src={url} alt="uploaded-image" className="max-w-[650px]" />;
+              return <img src={url} alt="uploaded-image" className="max-w-[500px]" />;
             })}
           </div>
           <div className="my-10 flex justify-center">
-            <p
-              style={{ whiteSpace: 'pre-line' }}
-              className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded"
-            >
+            <p className="mx-10 text-md w-[1000px] min-h-[50px] p-10  bg-gray-300/10 rounded-xl whitespace-pre-line">
               {content}
             </p>
           </div>

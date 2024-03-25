@@ -114,7 +114,7 @@ Communication
     </td>
      <td width="100" height="100">
       <div style="display: flex; align-items: center;">
-        <img src="" alt="icon" width="65" height="65" />
+        <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/121484282/81b31829-810a-4653-b54e-2fc9a3d98ad0" alt="icon" width="65" height="65" />
       </div>     
     </td>
     <td width="100" height="100">
@@ -138,10 +138,6 @@ Communication
 </table>
 
 <br>
-<br>
-<br>
-
-## 🐾 Code Convention
 <table>
     <tr>
        <th>기본 패키지 관리자</th>
@@ -196,7 +192,11 @@ Communication
 <br>
 <br>
 
-### 🐾 깃허브 커밋 규칙
+## 🐾 Code Convention
+
+<br>
+
+### 깃허브 커밋 규칙
 
 <table>
     <tr>
@@ -269,89 +269,57 @@ Communication
 <br>
 <br>
 
-## 와이어프레임
+## 🐾 와이어프레임
 협업 규칙 및 api명세서 이동하기 : [피그마](https://www.figma.com/file/rXrTHHxL6SKuHPSX4IuzJA/React-%EC%8B%AC%ED%99%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8---10%EC%A1%B0?type=whiteboard&node-id=4%3A61&t=MmWx8bpUjLQ2Po5F-1)
 <br>
 와이어프레임 이동하기 : [피그마](https://www.figma.com/file/rZ0h9E7Ugw3uGUr4seUzsY/10%EC%A1%B0-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?type=design&node-id=0%3A1&mode=design&t=r82Gh1ntRYJHMlcc-1)
 
-
-<br>
-<br>
-<br>
-
-
 <table>
     <tr>
-       <th width="200">메인페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+      <th>메인 페이지</th>
+      <th>커뮤니티, 중고거래<br>리스트 페이지</th>
+      <th>게시글 작성 페이지</th>
+      <th>게시글 상세 페이지</th>
+    </tr>
+  <tr>
+     <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/7a45b956-9660-4a6a-bd37-a17ca554ad6f" alt="메인페이지">
-        </div>
-      </td>
-    </tr>
-     <tr>
-       <th width="200">커뮤니티,중고거래<br>리스트 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+        </td>
+    <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/85565ca3-86f0-42a4-a5c0-ee881a507404" alt="상세페이지">
-        </div>
-      </td>
-    </tr>
-    <tr>
-       <th width="200">작성 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+        </td>
+   <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/f9bcee39-d80a-4be1-96a4-7726cc395815" alt="작성페이지">
-        </div>
-      </td>
-    </tr>
-    <tr>
-       <th width="200">디테일 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+        </td>
+     <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="디테일페이지">
-        </div>
-      </td>
-    </tr>
-      <tr>
-       <th width="200">식당/카페 정보 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
-          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="식당카페페이지">
-        </div>
-      </td>
-    </tr>
-      <tr>
-       <th width="200">병원/약국 정보 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
-          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="병원약국페이지">
-        </div>
-      </td>
-    </tr>
+        </td>
+  </tr>
+</table>
+<table>
     <tr>
-       <th width="200">로그인 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+       <th>장소 정보 (식당/카페,병원/약국) 페이지</th>
+      <th>로그인 페이지</th>
+      <th>회원가입 페이지</th>
+    </tr>
+  <tr>
+          <td style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/121484282/57632755-a96e-4329-8818-d55719d09fb8" alt="식당카페페이지">
+        </td>
+      <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/9c6975a6-0b20-46c4-bdbc-f484e03fce8e" alt="로그인페이지">
-        </div>
-      </td>
-    </tr>
-    <tr>
-       <th width="200">회원가입 페이지</th>
-       <td width="400" height="30">
-        <div style="display: flex; align-items:center; justify-content:center;">
+        </td>
+     <td style="display: flex; align-items:center; justify-content:center;">
           <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/1ddf1953-21ef-4799-bd08-9d268728e425" alt="회원가입페이지">
-        </div>
-      </td>
-    </tr>
+        </td>
+  </tr>
 </table>
 
 <br>
 <br>
 <br>
 
-## 기능 담당
+## 🐾 기능 담당
 
 |서혜련|박서영|박재민|안주원|
 |:----:|:----:|:----:|:----:|
@@ -362,7 +330,7 @@ Communication
 <br>
 <br>
 
-## 기능 소개
+## 🐾 기능 소개
 |서혜련|박서영|박재민|안주원|
 |:----:|:----:|:----:|:----:|
 |**Features**<br><br>커뮤니티 상세페이지<br>중고거래 상세페이지<br>상세페이지 댓글 기능 CRUD구현<br>상세페이지 좋아요/찜/스크랩 기능<br>식당/카페/병원/약국 장소정보 페이지<br> |<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티<br>리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>커뮤니티 수정 페이지<br>중고거래 작성 페이지<br>중고거래 수정 페이지<br>이미지 업로드 및 수정<br>|**Features**<br>로그인,로그아웃 기능구현|

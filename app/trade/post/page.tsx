@@ -6,7 +6,7 @@ export const CommunityPostPage = () => {
 
   return (
     <div className="flex justify-center m-5">
-      <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[820px]">
+      <div className="flex flex-col items-center bg-primaryColor/10 w-[1280px] min-h-[930px]">
         <h1 className="text-3xl font-semibold mt-12 mb-4 w-8/12">해피멍터 글쓰기</h1>
         <div className='border-gray-300 border-b w-8/12'></div>
         <TradeForm />

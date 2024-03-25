@@ -20,7 +20,7 @@ const Trade = () => {
     setSortedItems([...tradeItems].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
   }, [tradeItems]);
 
-  if (tradeLoading) return <div>Loading...</div>;
+  if (tradeLoading) return <div className='py-6 flex justify-center font-semibold'>Loading...</div>;
   if (tradeError) return <div>Error: {tradeError.message}</div>;
 
   const onClickLatestHandle = () => {
@@ -38,8 +38,11 @@ const Trade = () => {
   };
 
   return (
-    <section className="w-full px-10 py-20">
-      <div className="flex justify-between items-center mb-10">
+    <section className="w-full px-10 pb-20">
+      <div className='pt-12'>
+        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 애견용폼 거래 게시판</h1>
+      </div>
+      <div className="pt-3 flex justify-between items-center mb-10">
         <div>
           <button
             onClick={onClickLatestHandle}

@@ -9,7 +9,7 @@ type CommunityEditFormProps = {
   postId: string;
   prevTitle: string;
   prevContent: string;
-  prevImageUrls: string[]
+  prevImageUrls: string[];
 };
 
 const supabase = createClientJs();
@@ -50,7 +50,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
     }
 
     setIsLoading(true);
-    
+
     const bucket = 'community-image-bucket';
 
     const publicImageUrls = await Promise.all(
@@ -87,7 +87,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
       }}
       className="m-5 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-full md:h-96 lg:h-80 xl:h-64"
     >
-            <div className="my-10 flex">
+      <div className="my-10 flex">
         <label className="text-xl mr-2 w-12 font-medium">제목</label>
         <input
           ref={titleRef}
@@ -98,7 +98,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
           placeholder=" 제목을 입력해 주세요."
         />
       </div>
-      <div className="h-4/5">
+      <div className="h-[300px]">
         <textarea
           className="h-full w-full p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300"
           placeholder=" 내용을 입력해 주세요."
@@ -116,7 +116,7 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
             multiple
             accept="image/*"
             onChange={handleImageChange}
-            className="mr-auto bg-white w-auto"
+            className="mr-auto file-input file-input-bordered file-input-sm w-full max-w-xs"
           />
           <button
             className="px-4 py-2 bg-primaryColor font-semibold text-white rounded"
@@ -126,15 +126,15 @@ export const communityEditForm = ({ postId, prevTitle, prevContent, prevImageUrl
             이미지 업로드
           </button>
         </div>
-        <h1 className="font-semibold mt-6 mb-2">이미지 미리보기</h1>
-        {isLoading && <p>이미지 업로드 중...</p>}
+        <h1 className="font-semibold mt-6 mb-2 text-lg">이미지 미리보기</h1>
         <div className="flex flex-wrap max-h-28 h-24">
           {imageUrls.map((imageUrl, index) => (
-            <img key={index} className="w-20 max-h-20 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
+            <img key={index} className="w-32 h-32 object-cover mr-2" src={imageUrl} alt={`Uploaded ${index}`} />
           ))}
+          <h1 className="flex items-center ml-2 font-semibold">{isLoading && <p> 🐾 이미지 업로드 중...</p>}</h1>
         </div>
       </div>
-      <div className="flex justify-center space-x-20 mt-12">
+      <div className="flex justify-center space-x-20 mt-24">
         <button className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">취소</button>
         <button type="submit" className="text-lg px-4 py-2 bg-primaryColor font-semibold text-white rounded w-32 h-12">
           작성

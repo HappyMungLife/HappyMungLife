@@ -1,93 +1,383 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# 팀 프로젝트 해피멍생
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+## <목차>
+#프로젝트 팀명
+- 팀원소개<br>
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+#프로젝트 소개
+- 개발 기간 & 배포 도메인 & 프로젝트 소개<br>
 
-## Features
+#Project Rules
+- Tools
+- 개발환경
+- 프로젝트 운영 방식 및 Rule
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+#와이어프레임
+- 화면 구성 및 기능
+- 기능 담당
+- 기능 소개
 
-## Demo
+<br>
+#파일 구조
+<br>
+<br>
+<br>
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
 
-## Deploy to Vercel
+## 혁우님과 함께하면 참 10조
 
-Vercel deployment will guide you through creating a Supabase account and project.
+### 팀원 소개
+|서혜련|박서영|박재민|안주원|
+|:----:|:----:|:----:|:----:|
+|<img src="https://avatars.githubusercontent.com/u/121484282?v=4" alt="서혜련" width="100">|<img src="https://avatars.githubusercontent.com/u/116704646?v=4" alt="박서영" width="100">|<img src="https://avatars.githubusercontent.com/u/139940350?v=4" alt="박재민" width="100">|<img src="https://avatars.githubusercontent.com/u/154520094?v=4" width="100" alt="안주원">|
+|[@Hyeryeon-Seo](https://github.com/Hyeryeon-Seo)|[@seokachu](https://github.com/seokachu)|[@ahddl622](https://github.com/ahddl622)|[@joo1e](https://github.com/joo1e)|
+|팀장|팀원|팀원|팀원|
+|배포|리드미 작성|발표|시연 영상|
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This%20starter%20configures%20Supabase%20Auth%20to%20use%20cookies%2C%20making%20the%20user's%20session%20available%20throughout%20the%20entire%20Next.js%20app%20-%20Client%20Components%2C%20Server%20Components%2C%20Route%20Handlers%2C%20Server%20Actions%20and%20Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png&integration-ids=oac_VqOgBHqhEoFTPzGkPd7L0iH6)
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+<br>
+<br>
+<br>
 
-## Clone and run locally
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+## 프로젝트 "해피멍생"
 
-2. Create a Next.js app using the Supabase Starter template npx command
+배포 도메인 : [배포 링크 이동하기]()
 
-   ```bash
-   npx create-next-app -e with-supabase
-   ```
+프로젝트 명 : 해피멍생
 
-3. Use `cd` to change into the app's directory
+개발 기간 : 2024.03.18 ~ 2023.03.24 (7일)
 
-   ```bash
-   cd name-of-new-app
-   ```
+프로젝트 소개 : 강아지 반려견을 좋아하는 사람들의 정보교환, 커뮤니티 및 중고거래를 할 수 있는 사이트 입니다.
 
-4. Rename `.env.local.example` to `.env.local` and update the following:
 
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
+<br>
+<br>
+<br>
 
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
 
-5. You can now run the Next.js local development server:
 
-   ```bash
-   npm run dev
-   ```
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
 
-## Feedback and issues
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+## Tools
+Communication
 
-## More Supabase examples
+<table>
+  <tr>
+    <th>Github</th>
+    <th>Slack</th>
+    <th>Figma</th>
+  </tr>
+  <tr>
+    <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        <img src="https://techstack-generator.vercel.app/github-icon.svg" alt="icon" width="65" height="65" />
+      </div>     
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items:center; justify-content:center;">
+         &nbsp;&nbsp;&nbsp;<img src="https://github.com/seokachu/movie_project/assets/116704646/7587830d-ead0-4adb-aa60-984df1b326a5" alt="icon" width="45" height="45" style="text-align:center" />
+      </div>
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        &nbsp;&nbsp;
+        <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/867feb77-319b-497f-9836-07abb6637596" alt="icon" width="45" text-align="center">
+      </div>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+
+
+## 개발환경
+<table>
+  <tr>
+    <th>Next.js</th>
+    <th>Prettier</th>
+    <th>Tailwind</th>
+    <th>DaisyUI</th>
+  </tr>
+  <tr>
+    <td width="100" height="100">
+      <div style="display: flex; align-items:center; justify-content:center;">
+         &nbsp;&nbsp;&nbsp;<img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/ca3b35d4-25bf-4038-9a33-2daf9e6c5ade" alt="icon" width="50" height="50" style="text-align:center" />
+      </div>
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" />
+      </div>     
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        &nbsp;
+        <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/c5cc1636-4a0e-4456-b369-1e15a8840363" alt="icon" width="60" height="60" />
+      </div>     
+    </td>
+    <td width="100" height="100">
+      <div style="display: flex; align-items: center;">
+        &nbsp;
+        <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/a26efc15-198f-44f2-a337-13323e049ac2" alt="icon" width="60" height="60" />
+      </div>     
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+<br>
+
+## Code Convention
+<table>
+    <tr>
+       <th>기본 패키지 관리자</th>
+       <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        yarn
+      </div>
+    </td>
+    </tr>
+    <tr>
+       <th>FE 개발 툴</th>
+         <td width="300" height="30">
+      <div style="text-align:center">
+        Next.js (React 기반)
+      </div>
+    </td>
+    </tr>
+   <tr>
+     <th>전역 상태 관리 라이브러리</th>
+     <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        Zustand
+      </div>
+    </td>
+   </tr>
+   <tr>
+      <th>비동기 로직 라이브러리</th>
+     <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        TanStack/React-Query
+      </div>
+    </td>
+   </tr>
+   <tr>
+      <th>CSS</th>
+          <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        Tailwind CSS 기반 디자인 시스템
+      </div>
+    </td>
+   </tr>
+    <tr>
+          <th>DB</th>
+          <td>
+      <div style="display: flex; align-items:center; justify-content:center;">
+       Supabase
+      </div>
+    </td>
+    </tr>
+</table>
+
+
+<br>
+<br>
+<br>
+
+### 깃허브 커밋 규칙
+
+<table>
+    <tr>
+       <th>Feat</th>
+       <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        기능구현
+      </div>
+    </td>
+    </tr>
+    <tr>
+       <th>Add</th>
+         <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        없던 파일을 생성함, 초기세팅
+      </div>
+    </td>
+    </tr>
+   <tr>
+     <th>Refactor</th>
+     <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        코드 리팩토링
+      </div>
+    </td>
+   </tr>
+   <tr>
+      <th>Fix</th>
+     <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        코드수정
+      </div>
+    </td>
+   </tr>
+   <tr>
+      <th>Move</th>
+          <td width="300" height="30">
+      <div style="display: flex; align-items:center; justify-content:center;">
+        파일 옮김/정리
+      </div>
+    </td>
+   </tr>
+    <tr>
+          <th>Del</th>
+          <td>
+      <div style="display: flex; align-items:center; justify-content:center;">
+        기능/파일을 삭제
+      </div>
+    </td>
+    </tr>
+    <tr>
+       <th>Style</th>
+       <td>
+      <div style="display: flex; align-items:center; justify-content:center;">
+        css
+      </div>
+    </td>
+    </tr>
+   <tr>
+      <th>Script</th>
+      <td>
+      <div style="display: flex; align-items:center; justify-content:center;">
+        package.json 추가
+      </div>
+    </td>
+   </tr>
+</table>
+
+<br>
+<br>
+<br>
+
+## 와이어프레임
+협업 규칙 및 api명세서 이동하기 : [피그마](https://www.figma.com/file/rXrTHHxL6SKuHPSX4IuzJA/React-%EC%8B%AC%ED%99%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8---10%EC%A1%B0?type=whiteboard&node-id=4%3A61&t=MmWx8bpUjLQ2Po5F-1)
+<br>
+와이어프레임 이동하기 : [피그마](https://www.figma.com/file/rZ0h9E7Ugw3uGUr4seUzsY/10%EC%A1%B0-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?type=design&node-id=0%3A1&mode=design&t=r82Gh1ntRYJHMlcc-1)
+
+
+<br>
+<br>
+<br>
+
+
+<table>
+    <tr>
+       <th width="200">메인페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/7a45b956-9660-4a6a-bd37-a17ca554ad6f" alt="메인페이지">
+        </div>
+      </td>
+    </tr>
+     <tr>
+       <th width="200">커뮤니티,중고거래<br>리스트 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/85565ca3-86f0-42a4-a5c0-ee881a507404" alt="상세페이지">
+        </div>
+      </td>
+    </tr>
+    <tr>
+       <th width="200">작성 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/f9bcee39-d80a-4be1-96a4-7726cc395815" alt="작성페이지">
+        </div>
+      </td>
+    </tr>
+    <tr>
+       <th width="200">디테일 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/793d8213-9af0-4aa7-af4d-6599ac01d7d8" alt="디테일페이지">
+        </div>
+      </td>
+    </tr>
+    <tr>
+       <th width="200">로그인 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/9c6975a6-0b20-46c4-bdbc-f484e03fce8e" alt="로그인페이지">
+        </div>
+      </td>
+    </tr>
+    <tr>
+       <th width="200">회원가입 페이지</th>
+       <td width="400" height="30">
+        <div style="display: flex; align-items:center; justify-content:center;">
+          <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/assets/116704646/1ddf1953-21ef-4799-bd08-9d268728e425" alt="회원가입페이지">
+        </div>
+      </td>
+    </tr>
+</table>
+
+<br>
+<br>
+<br>
+
+## 기능 담당
+
+|서혜련|박서영|박재민|안주원|
+|:----:|:----:|:----:|:----:|
+|커뮤니티 상세페이지<br>중고거래 상세페이지<br>|메인페이지<br>커뮤니티 리스트 페이지<br>중고거래 리스트 페이지<br>|커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|로그인,로그아웃 페이지<br>|
+
+
+<br>
+<br>
+<br>
+
+## 기능 소개
+|서혜련|박서영|박재민|안주원|
+|:----:|:----:|:----:|:----:|
+|**Features**<br><br>커뮤니티 상세페이지 랜더링<br>중고거래 상세페이지 랜더링<br>상세페이지 안에 보이는 댓글기능 CRUD구현|<br>**Features**<br><br>메인페이지 슬라이더 기능<br>메인페이지 커뮤니티, <br>중고거래 페이지 찜목록, 인기순 <br>리스트3개 정렬 랜더링<br>커뮤니티 페이지, 중고거래 커뮤니티<br>리스트 불러오기<br>파비콘 디자인<br>&nbsp;|**Features**<br><br>커뮤니티 작성 페이지<br>중고거래 작성 페이지<br>|**Features**<br>로그인,로그아웃 기능구현|
+
+
+<br>
+<br>
+<br>
+
+## 파일 구조
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

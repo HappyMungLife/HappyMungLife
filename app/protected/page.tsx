@@ -1,7 +1,7 @@
-import DeployButton from '@/app/_components/DeployButton';
-import AuthButton from '@/app/_components/AuthButton';
+// import DeployButton from '@/app/_components/DeployButton';
+// import AuthButton from '@/app/_components/AuthButton';
 import { createClient } from '@/app/_utils/supabase/server';
-import FetchDataSteps from '@/app/_components/tutorial/FetchDataSteps';
+// import FetchDataSteps from '@/app/_components/tutorial/FetchDataSteps';
 import Header from '@/app/_components/layout/Header';
 import { redirect } from 'next/navigation';
 
@@ -24,8 +24,8 @@ export default async function ProtectedPage() {
         </div>
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
           <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-            <DeployButton />
-            <AuthButton />
+            {/* <DeployButton /> */}
+            {/* <AuthButton /> */}
           </div>
         </nav>
       </div>
@@ -34,7 +34,7 @@ export default async function ProtectedPage() {
         <Header />
         <main className="flex-1 flex flex-col gap-6">
           <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          <FetchDataSteps />
+          {/* <FetchDataSteps /> */}
         </main>
       </div>
 

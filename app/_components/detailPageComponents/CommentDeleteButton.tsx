@@ -14,7 +14,11 @@ const CommentDeleteButton = ({ commentId, mode }: { commentId: string; mode: str
     } else return;
   };
 
-  return <button onClick={handleDeleteClick}>삭제</button>;
+  return (
+    <button onClick={handleDeleteClick} className="bg-red-400/60 font-semibold text-white rounded p-2 w-20">
+      삭제
+    </button>
+  );
 };
 
 export default CommentDeleteButton;

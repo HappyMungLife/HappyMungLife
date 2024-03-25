@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import { createClient } from '@/app/_utils/supabase/server';
 import { redirect } from 'next/navigation';
 import { SubmitButton } from './submit-button';
+import { createClient } from '@/app/_utils/supabase/server';
 
 export default function Login({ searchParams }: { searchParams: { message: string } }) {
   const signIn = async (formData: FormData) => {
     'use server';
-
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     const supabase = createClient();
@@ -18,10 +17,14 @@ export default function Login({ searchParams }: { searchParams: { message: strin
     });
 
     if (error) {
-      return redirect('/login?message=Could not authenticate user');
+      // return redirect('/login?message=Could not authenticate user');
+      // return alert('이메일이나 비밀번호가 올바르지 않습니다. 다시 시도해주세요.');
     }
 
-    return redirect('/protected');
+    // const subcription = supabase.auth.onAuthStateChange();
+    // return redirect('/protected');
+    // alert('로그인 되었습니다.');
+    return redirect('/');
   };
 
   const signUp = async (formData: FormData) => {
@@ -70,7 +73,7 @@ export default function Login({ searchParams }: { searchParams: { message: strin
         Back
       </Link>
 
-      <form className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
+      <form className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground text-black">
         <label className="text-md" htmlFor="email">
           Email
         </label>

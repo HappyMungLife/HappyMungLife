@@ -14,7 +14,6 @@ export const CommunityForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
 
-
   useEffect(() => {
     if (titleRef.current) {
       titleRef.current.focus();
@@ -95,7 +94,7 @@ export const CommunityForm = () => {
 
     const { data, error } = await supabase
       .from('communityPosts')
-      .insert([{ title, content, imageUrl: imageUrls, userId: '1234' }])
+      .insert([{ title, content, imageUrl: imageUrls, userId: 'tenth@n.com' }])
       .select('*');
 
     if (data) {

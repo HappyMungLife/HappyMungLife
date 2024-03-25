@@ -109,7 +109,7 @@ const MealListPage = () => {
             return (
               <div
                 key={idx}
-                className="flex flex-col gap-1 justify-center items-start border-[1px] border-gray-300 rounded-lg p-5 w-5/12"
+                className="flex flex-col gap-1 justify-center items-start border-[1px] border-gray-300 rounded-lg p-5 w-[500px]"
               >
                 <p>{item['카테고리3']}</p>
                 <p className="font-bold text-lg">{item['시설명']}</p>
@@ -129,7 +129,7 @@ const MealListPage = () => {
               .fill(startPage)
               .map((_, i) => {
                 return (
-                  <button key={i} onClick={() => setCurrentPage(startPage + i)}>
+                  <button key={i} onClick={() => setCurrentPage(startPage + i)} className="text-[16px] font-bold">
                     {startPage + i}
                   </button>
                 );

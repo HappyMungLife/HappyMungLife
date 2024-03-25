@@ -1,6 +1,8 @@
 import CommunityForm from '@/app/_components/communityPageComponents/CommunityForm';
 import { createClientJs } from '@/app/_utils/supabase/createClientJs';
 
+export const revalidate = 0;
+
 export const CommunityPostPage = () => {
   const supabase = createClientJs();
 

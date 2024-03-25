@@ -83,8 +83,9 @@ const Community = () => {
                 </figure>
                 <div className="w-full relative">
                   <div className="flex items-center justify-between">
-                    <div className="flex">
-                      <h2 className="mr-3">{item.userId}</h2>
+                    <div className="flex gap-2 items-center">
+                      <img src={item.postUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-7 h-7" />
+                      <h2 className="mr-3">{item.postUser.nickname}</h2>
                       <div className="flex items-center">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <p className="mr-3">{item.liked}</p>

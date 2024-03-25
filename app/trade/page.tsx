@@ -71,9 +71,9 @@ const Trade = () => {
                 </figure>
                 <div className="w-full relative">
                   <div className="flex items-center justify-between">
-                    <div className="flex">
-                      {/* <p>닉네임이미지</p> */}
-                      <h2 className="mr-3">{item.userId}</h2>
+                    <div className="flex gap-2 items-center">
+                      <img src={item.postUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-7 h-7" />
+                      <h2 className="mr-3">{item.postUser.nickname}</h2>
                       <p>
                         <span>{item.liked}</span>
                       </p>

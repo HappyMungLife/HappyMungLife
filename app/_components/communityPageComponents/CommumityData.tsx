@@ -11,7 +11,7 @@ export const CommunityData = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data, error } = await supabase.from('communityPosts').select('*');
+      const { data, error } = await supabase.from('communityPosts').select('*, postUser:users(nickname,profileImage)');
       if (error) {
         setError(error);
       } else {

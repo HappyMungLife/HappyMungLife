@@ -11,7 +11,7 @@ export const TradeData = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data, error } = await supabase.from('tradePosts').select('*');
+      const { data, error } = await supabase.from('tradePosts').select('*, postUser:users(nickname,profileImage)');
       if (error) {
         setTradeError(error);
       } else {

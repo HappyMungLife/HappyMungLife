@@ -355,14 +355,183 @@ Communication
 
 <table>
 <tr>
-  <th>메인 페이지</th>
+  <th>1. 메인 페이지</th>
   </tr>
   <tr>
-  <td></td>
+ <td><img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/main_page.png" width="500"/> </td>
   </tr>
+</table>
 
+<br>
+<br>
+
+<table>
+<tr>
+  <th>2. 커뮤니티, 중고거래 리스트 페이지</th>
+  </tr>
+  <tr>
+ <td style="display: flex; justify-content:center; align-items:center;">
+   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_list_page.png" width="450"/>
+  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_list_page.png" width="450"/> 
+ </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+<table>
+<tr>
+  <th>3. 커뮤니티, 중고거래 게시글 작성 페이지</th>
+  </tr>
+  <tr>
+<td style="display: flex; justify-content:center; align-items:center;">
+  <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/post_page.png" width="450"/>
+ <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/edit_page.png" width="450"/> </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+<table>
+<tr>
+  <th>4. 커뮤니티, 중고거래 게시글 상세 페이지</th>
+  </tr>
+  <tr>
+ <td style="display: flex; justify-content:center; align-items:center;">
+   <img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/community_detail_page.png" width="450"/> 
+<img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/trade_detail_page.png" width="450"/> </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+<table>
+<tr>
+  <th>5. 식당/카페, 병원/약국 장소 정보 페이지</th>
+  </tr>
+  <tr>
+ <td><img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/place_info_page.png" width="500"/> </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+<table>
+<tr>
+  <th>6. 로그인/회원가입 페이지</th>
+  </tr>
+  <tr>
+ <td><img src="https://github.com/sparta-advancedProject-team10/HappyMungLife/blob/main/assets/login_page.png" width="500"/> </td>
+  </tr>
+</table>
+
+<br>
 <br>
 <br>
 <br>
 
 ## 🐾 파일 구조
+
+<br>
+
+📦app
+┣ 📂auth
+┃ ┗ 📂callback
+┃ ┃ ┗ 📜route.ts
+┣ 📂community
+┃ ┣ 📂detail
+┃ ┃ ┗ 📂[id]
+┃ ┃ ┃ ┣ 📂edit
+┃ ┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┣ 📂post
+┃ ┃ ┗ 📜page.tsx
+┃ ┗ 📜page.tsx
+┣ 📂meal
+┃ ┗ 📜page.tsx
+┣ 📂medical
+┃ ┗ 📜page.tsx
+┣ 📂mypage
+┃ ┗ 📜page.tsx
+┣ 📂protected
+┃ ┗ 📜page.tsx
+┣ 📂sign
+┃ ┣ 📂signIn
+┃ ┃ ┣ 📜page.tsx
+┃ ┃ ┗ 📜submit-button.tsx
+┃ ┗ 📂signUp
+┃ ┃ ┗ 📜page.tsx
+┣ 📂trade
+┃ ┣ 📂detail
+┃ ┃ ┗ 📂[id]
+┃ ┃ ┃ ┣ 📂edit
+┃ ┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┣ 📂post
+┃ ┃ ┗ 📜page.tsx
+┃ ┗ 📜page.tsx
+┣ 📂_api
+┃ ┣ 📜comment-api.ts
+┃ ┣ 📜detailPage-api.ts
+┃ ┗ 📜placeInfo-api.ts
+┣ 📂_components
+┃ ┣ 📂communityPageComponents
+┃ ┃ ┣ 📜CommumityData.tsx
+┃ ┃ ┣ 📜CommunityCommentsData.tsx
+┃ ┃ ┣ 📜CommunityEditForm.tsx
+┃ ┃ ┗ 📜CommunityForm.tsx
+┃ ┣ 📂detailPageComponents
+┃ ┃ ┣ 📜CommentDeleteButton.tsx
+┃ ┃ ┣ 📜CommentForm.tsx
+┃ ┃ ┣ 📜CommentItem.tsx
+┃ ┃ ┣ 📜CommentList.tsx
+┃ ┃ ┣ 📜LikeButton.tsx
+┃ ┃ ┣ 📜PostEditDeleteButton.tsx
+┃ ┃ ┣ 📜SaveButton.tsx
+┃ ┃ ┗ 📜ScrapButton.tsx
+┃ ┣ 📂layout
+┃ ┃ ┣ 📜Footer.tsx
+┃ ┃ ┣ 📜Header.tsx
+┃ ┃ ┗ 📜Nav.tsx
+┃ ┣ 📂mainPageComponents
+┃ ┃ ┗ 📜test.tsx
+┃ ┗ 📂tradePageComponents
+┃ ┃ ┣ 📜TradeCommentData.tsx
+┃ ┃ ┣ 📜TradeData.tsx
+┃ ┃ ┣ 📜TradeEditForm.tsx
+┃ ┃ ┗ 📜TradeForm.tsx
+┣ 📂_hooks
+┃ ┣ 📜useAddCommunityCommentMutation.ts
+┃ ┣ 📜useAddTradeCommentMutation.ts
+┃ ┣ 📜useDeleteCommunityCommentMutation.ts
+┃ ┣ 📜useDeleteTradeCommentMutation.ts
+┃ ┣ 📜useFetchCommunityCommentsQuery.ts
+┃ ┣ 📜useFetchTradeCommentsQuery.ts
+┃ ┣ 📜useUpdateCommunityCommentMutation.ts
+┃ ┗ 📜useUpdateTradeCommentMutation.ts
+┣ 📂_style
+┃ ┗ 📜mainSwiper.css
+┣ 📂_types
+┃ ┣ 📜communityPosts.types.ts
+┃ ┗ 📜mainPage.type.ts
+┣ 📂_utils
+┃ ┣ 📂supabase
+┃ ┃ ┣ 📜api.ts
+┃ ┃ ┣ 📜auth.ts
+┃ ┃ ┣ 📜client.ts
+┃ ┃ ┣ 📜clientJs.ts
+┃ ┃ ┣ 📜createClientJs.ts
+┃ ┃ ┣ 📜middleware.ts
+┃ ┃ ┗ 📜server.ts
+┃ ┗ 📜date.ts
+┣ 📜actions.ts
+┣ 📜favicon.ico
+┣ 📜globals.css
+┣ 📜layout.tsx
+┣ 📜not-found.tsx
+┣ 📜page.tsx
+┗ 📜provider.tsx

@@ -110,7 +110,7 @@ const MedicalListPage = () => {
             return (
               <div
                 key={idx}
-                className="flex flex-col gap-1 justify-center items-start border-[1px] border-primaryColor/80 rounded-lg bg-gray-200/20 p-5 w-5/12 "
+                className="flex flex-col gap-1 justify-center items-start border-[1px] border-primaryColor/80 rounded-lg p-5 w-[500px]"
               >
                 <p>{item['카테고리3']}</p>
                 <p className="font-bold text-lg">{item['시설명']}</p>
@@ -130,7 +130,7 @@ const MedicalListPage = () => {
               .fill(startPage)
               .map((_, i) => {
                 return (
-                  <button key={i} onClick={() => setCurrentPage(startPage + i)}>
+                  <button key={i} onClick={() => setCurrentPage(startPage + i)} className="text-[16px] font-bold">
                     {/* // $active={page === startPage + i} */}
                     {startPage + i}
                   </button>

@@ -89,10 +89,10 @@ const validation = ({ email, password, passwordCheck, nickname }: userValidate) 
     return false;
   }
 
-  if (password !== passwordCheck) {
-    alert('비밀번호가 일치하지 않습니다.');
-    return false;
-  }
+  // if (password !== passwordCheck) {
+  //   alert('비밀번호가 일치하지 않습니다.');
+  //   return false;
+  // }
 
   return true;
 };

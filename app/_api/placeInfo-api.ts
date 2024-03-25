@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // .env.local에 넣기 perPage=20
-const URL = `https://api.odcloud.kr/api/15111389/v1/uddi:41944402-8249-4e45-9e9d-a52d0a7db1cc?page=1&perPage=1000&serviceKey=${process.env.NEXT_PUBLIC_GOVERNDATA_KEY}`;
+const URL = `https://api.odcloud.kr/api/15111389/v1/uddi:41944402-8249-4e45-9e9d-a52d0a7db1cc?page=1&perPage=2000&serviceKey=${process.env.NEXT_PUBLIC_GOVERNDATA_KEY}`;
 
 // 모든 식당카페 정보
 export const fetchMealList = async () => {

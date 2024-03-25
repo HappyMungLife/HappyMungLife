@@ -100,8 +100,9 @@ export default function Index() {
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">
                 <Link href={`/community/detail/${item.postId}`} className="p-7 block">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>
+                    <div className="flex items-center gap-2">
+                      <img src={item.postUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-7 h-7" />
+                      <h2 className="mr-3 font-semibold text-xl">{item.postUser.nickname}</h2>
                       <p className="mr-2">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <span>{item.liked}</span>
@@ -127,8 +128,9 @@ export default function Index() {
               <li key={item.postId} className="mb-5 bg-white text-left rounded-xl">
                 <Link href={`/trade/detail/${item.postId}`} className="p-7 block">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <h2 className="mr-3 font-semibold text-xl">{item.userId}</h2>
+                    <div className="flex items-center gap-2">
+                      <img src={item.postUser.profileImage} alt="userProfileImg" className="rounded-[50%] w-7 h-7" />
+                      <h2 className="mr-3 font-semibold text-xl">{item.postUser.nickname}</h2>
                       <p className="mr-2">
                         <FontAwesomeIcon className="mr-1 text-primaryColor" icon={faHeartSolid} />
                         <span>{item.saved}</span>

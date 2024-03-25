@@ -24,7 +24,7 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
     }
   };
 
-  const userId = 'gpfus'; // 임시 설정 테스트
+  const userId = 'tenth@n.com'; // 임시 설정 테스트
 
   const posts = await fetchPost();
   const { title, content, imageUrl, created_at, postUser } = posts ? posts : '';
@@ -56,7 +56,12 @@ const TradeDetailPage = async ({ params }: { params: { id: string } }) => {
             })}
           </div>
           <div className="my-10 flex justify-center">
-            <p style={{whiteSpace: 'pre-line'}} className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded">{content}</p>
+            <p
+              style={{ whiteSpace: 'pre-line' }}
+              className="mx-10 text-md w-[1000px] min-h-[50px] p-10 bg-primaryColor/10 rounded"
+            >
+              {content}
+            </p>
           </div>
         </section>
         <section className="flex justify-between mt-[30px] px-20 w-full">

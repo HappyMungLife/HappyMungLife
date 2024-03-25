@@ -13,8 +13,10 @@ import { CommunityData } from '@/app/_components/communityPageComponents/Commumi
 import { formatToLocaleDateTimeString } from '../_utils/date';
 import Image from 'next/image';
 import CommunityCommentsData from '../_components/communityPageComponents/CommunityCommentsData';
+import { useRouter } from 'next/navigation';
 
 const Community = () => {
+  const router = useRouter();
   const { items, loading, error } = CommunityData();
   const { comments } = CommunityCommentsData();
   const [sortedItems, setSortedItems] = useState<any[]>([]);
@@ -39,14 +41,14 @@ const Community = () => {
     setIsActive('like');
   };
 
-  const onClickWhiteHandle = () => {
-    alert('로그인해야 쓸 수 있습니다.');
-  };
+  // const onClickWhiteHandle = () => {
+  //   router;
+  // };
 
   return (
     <section className="w-full px-10 pb-20">
-      <div className='pt-12'>
-        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 커뮤니티 게시판</h1>
+      <div className="pt-12">
+        <h1 className="pb-2 text-xl font-semibold border-b-primaryColor border"> 🩵 커뮤니티 게시판</h1>
       </div>
       <div className="pt-3 flex justify-between items-center mb-10">
         <div>
@@ -63,8 +65,8 @@ const Community = () => {
             인기순
           </button>
         </div>
-        <button className="hover:text-primaryColor" onClick={onClickWhiteHandle}>
-          작성하기
+        <button className="hover:text-primaryColor">
+          <Link href={`/community/post`}>작성하기</Link>
         </button>
       </div>
       <div>

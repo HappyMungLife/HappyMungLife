@@ -20,7 +20,7 @@ const Trade = () => {
     setSortedItems([...tradeItems].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
   }, [tradeItems]);
 
-  if (tradeLoading) return <div className='py-6 flex justify-center font-semibold'>Loading...</div>;
+  if (tradeLoading) return <div className="py-6 flex justify-center font-semibold">Loading...</div>;
   if (tradeError) return <div>Error: {tradeError.message}</div>;
 
   const onClickLatestHandle = () => {
@@ -33,14 +33,10 @@ const Trade = () => {
     setIsActive('saved');
   };
 
-  const onClickTradeHandle = () => {
-    alert('로그인해야 쓸 수 있습니다.');
-  };
-
   return (
     <section className="w-full px-10 pb-20">
-      <div className='pt-12'>
-        <h1 className='pb-2 text-xl font-semibold border-b-primaryColor border'> 🩵 애견용폼 거래 게시판</h1>
+      <div className="pt-12">
+        <h1 className="pb-2 text-xl font-semibold border-b-primaryColor border"> 🩵 애견용폼 거래 게시판</h1>
       </div>
       <div className="pt-3 flex justify-between items-center mb-10">
         <div>
@@ -57,8 +53,8 @@ const Trade = () => {
             인기순
           </button>
         </div>
-        <button className="hover:text-primaryColor" onClick={onClickTradeHandle}>
-          작성하기
+        <button className="hover:text-primaryColor">
+          <Link href={`/trade/post`}>작성하기</Link>
         </button>
       </div>
       <div>
